@@ -38,6 +38,8 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --player-color: #399AAF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -104,4 +106,22 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+svg.playerColor {
+  fill: var(--player-color);
+  max-width: 2.1rem;
+  max-height: 2rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: whitesmoke;
+  color: black;
+  font-size: 2rem;
+  font-family: sans-serif;
 }
