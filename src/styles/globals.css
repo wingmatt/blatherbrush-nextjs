@@ -61,3 +61,11 @@ header {
   font-size: 2rem;
   font-family: sans-serif;
 }
+
+main {
+  display: grid;
+  place-items: center;
+  grid-template-areas:
+    "title title"
+    "context canvas"
+}
