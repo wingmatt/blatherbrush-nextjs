@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
+import Title from '@/components/Title'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +16,7 @@ export default function Home() {
       </Head>
       <Header/>
       <main className={` ${inter.className}`}>
-        <h1>Blatherbrush</h1>
+        <Title/>
         <form>
           <h2>What&apos;s your name?</h2>
           <input type="text" name="playerName" />

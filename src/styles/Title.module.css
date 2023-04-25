@@ -1,0 +1,12 @@
+.title {
+  display: inline-block;
+  font-size: 2rem;
+  text-align: center;
+  transform: rotate(-5deg);
+  padding: 24px 8px;
+  /* TODO: Make these differ based on light/dark mode */
+  background: linear-gradient(to right, #024059, #00BBC9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

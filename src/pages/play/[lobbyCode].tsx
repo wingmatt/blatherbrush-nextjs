@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
+import Title from '@/components/Title'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function Home() {
       </Head>
       <Header/>
       <main className={` ${inter.className}`}>
-        <h1>Blatherbrush</h1>
+        <Title/>
         <form>
           <fieldset>
             <legend>1 • Claim your word!</legend>
