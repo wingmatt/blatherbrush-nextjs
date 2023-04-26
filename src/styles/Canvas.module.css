@@ -6,3 +6,9 @@
   max-width: clamp(20vh, 100%, 50vh);
   height: auto;
 }
+
+@media screen and (max-width: 768px) {
+  .canvas {
+    max-width: 42vw;
+  }
+}
