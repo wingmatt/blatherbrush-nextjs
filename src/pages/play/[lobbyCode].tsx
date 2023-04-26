@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'
-import WordClaims from '@/components/WordClaims'
+import PlayerForm from '@/components/PlayerForm'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,12 +22,7 @@ export default function Home() {
       <Header/>
       <main className={` ${inter.className}`}>
         <Title/>
-        <form>
-          <WordClaims />
-          <label>2 • What&apos;s the word?</label>
-          <input type="text" name="wordSubmission" />
-          <button type="submit" className="button highlight">3 • Submit</button>
-        </form>
+        <PlayerForm/>
         <Canvas url="no" prompt="no"/>
         <p>This is the prompt</p>
       </main>

@@ -1,0 +1,16 @@
+.playerForm h2 {
+  flex: 100%;
+  text-align: center;
+}
+
+.playerForm, .playerForm > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
+}
+.playerForm button {
+  width: 100%;
+  padding: 16px;
+}
