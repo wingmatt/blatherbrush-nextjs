@@ -68,4 +68,8 @@ main {
   grid-template-areas:
     "title title"
     "context canvas"
+    "subcontext prompt";
+  max-width: var(--max-width);
+  margin: auto;
+  gap: 2vw;
 }
