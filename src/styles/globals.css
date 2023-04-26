@@ -73,3 +73,15 @@ main {
   margin: auto;
   gap: 2vw;
 }
+
+.button {
+  padding: 8px 16px;
+  background: var(--color-background);
+  box-shadow: 2px 2px 0 var(--color-foreground);
+  border: 1px solid var(--color-foreground);
+  color: var(--color-foreground);
+  border-radius: 8px;
+}
+.button.highlight {
+  background: var(--player-color);
+}

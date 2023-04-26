@@ -27,7 +27,7 @@ export default function Home() {
           <WordClaims />
           <label>2 • What&apos;s the word?</label>
           <input type="text" name="wordSubmission" />
-          <button type="submit">3 • Submit</button>
+          <button type="submit" className="button highlight">3 • Submit</button>
         </form>
         <Canvas url="no" prompt="no"/>
         <p>This is the prompt</p>
