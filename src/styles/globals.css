@@ -19,6 +19,7 @@
   }
   html {
     color-scheme: dark;
+    font-size: 16px;
   }
 }
 
@@ -84,4 +85,12 @@ main {
 }
 .button.highlight {
   background: var(--player-color);
+}
+
+input[type="text"] {
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 var(--color-foreground);
+  border: 1px solid var(--color-foreground);
+  color: var(--color-foreground);
+  padding: 8px;
 }
