@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Title from '@/components/Title'
+import Canvas from '@/components/Canvas'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +32,7 @@ export default function Home() {
           <li>Adjective</li>
           <li>Noun</li>
         </ul>
-        <Image alt="Blank Canvas" src="https://via.placeholder.com/1024" width="512" height="512" />
+        <Canvas/>
         <p>This is the prompt</p>
       </main>
     </>
