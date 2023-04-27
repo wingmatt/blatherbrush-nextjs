@@ -1,0 +1,19 @@
+.start {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: span 2;
+  gap: 16px;
+}
+
+.start div {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+.start div input {
+  width: 8ch;
+  text-align: center;
+  font-family: monospace;
+}
