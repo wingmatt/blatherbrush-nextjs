@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'
+import WordClaims from "@/components/WordClaims";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,18 +23,12 @@ export default function Home() {
       <Header/>
       <main className={` ${inter.className}`}>
         <Title/>
-        <h2 className="lobby-code"> Lobby Code: <span>{lobbyCode}</span></h2>
-        <ul className='word-list'>
-          <li>Animal</li>
-          <li>Adjective</li>
-          <li>Adjective</li>
-          <li>Time of Day</li>
-          <li>Adjective</li>
-          <li>Adjective</li>
-          <li>Noun</li>
-        </ul>
+        <aside>
+          <h2 className="lobby-code"> Lobby Code: <span>{lobbyCode}</span></h2>
+          <WordClaims/>
+        </aside>
         <Canvas/>
-        <p>This is the prompt</p>
+        <p>Waiting for words...</p>
       </main>
     </>
   )
