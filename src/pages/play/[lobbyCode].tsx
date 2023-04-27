@@ -24,7 +24,6 @@ export default function Home() {
         <Title/>
         <PlayerForm/>
         <Canvas url="no" prompt="no"/>
-        <p>This is the prompt</p>
       </main>
     </>
   )
