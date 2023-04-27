@@ -8,6 +8,7 @@ const PlayerForm = () => {
   });
   return (
     <form className={styles.playerForm}>
+      <h2>1 • Claim your word!</h2>
       <WordClaims />
       <label>
         <h2>2 • What&apos;s the word?</h2>
