@@ -5,6 +5,7 @@
 
   --color-mono-dark: #111;
   --color-mono-light: #fdfdfd;
+  --color-mono-highlight: #e3e3e3;
 
   --color-foreground: var(--color-mono-dark);
   --color-background: var(--color-mono-light);
@@ -16,6 +17,7 @@
   :root {
     --color-foreground: var(--color-mono-light);
     --color-background: var(--color-mono-dark);
+    --color-mono-highlight: #737373;
   }
   html {
     color-scheme: dark;
@@ -79,16 +81,18 @@ main {
   main {
     display: flex;
     flex-flow: column;
+    gap: 16px;
   }
 }
 
 .button {
   padding: 8px 16px;
-  background: var(--color-background);
+  background: var(--color-mono-highlight);
   box-shadow: 2px 2px 0 var(--color-foreground);
   border: 1px solid var(--color-foreground);
   color: var(--color-foreground);
   border-radius: 8px;
+  cursor: pointer;
 }
 .button.highlight {
   background: var(--player-color);
@@ -100,4 +104,11 @@ input[type="text"] {
   border: 1px solid var(--color-foreground);
   color: var(--color-foreground);
   padding: 8px;
+}
+
+main aside {
+  text-align: center;
+}
+main aside h2 {
+  margin-bottom: 16px;
 }
