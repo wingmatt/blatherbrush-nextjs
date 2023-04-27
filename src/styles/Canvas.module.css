@@ -11,4 +11,7 @@
   .canvas {
     max-width: 42vw;
   }
+  main > *:not(.canvas, h1) {
+    order: 2;
+  }
 }
