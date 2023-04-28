@@ -1,4 +1,4 @@
-interface Lobby {
+export interface Lobby {
   id: string;
   created_at: string;
   code: string;
@@ -6,14 +6,29 @@ interface Lobby {
   artUrl?: string;
   sentence: (string | PromptFragment)[];
 }
-interface PromptFragment {
+export interface PromptFragment {
   type: string;
   text: string;
-  claimedBy: string;
+  claimed_by: string;
   status: "open" | "claimed" | "submitted";
 }
 
-interface Player {
+export interface Player {
   name: string;
   color: string;
+}
+
+export interface ReducerAction {
+  type: string;
+  payload: any;
+};
+
+export interface ReducerState {
+  player: Player,
+  lobby: Lobby,
+  prompts: PromptFragment[]
+}
+
+export interface Props {
+  children: React.ReactNode;
 }
