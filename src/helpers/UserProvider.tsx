@@ -8,7 +8,14 @@ const UserContext = React.createContext<
 
 function userDataReducer(state: ReducerState, action: ReducerAction): any {
   switch (action.type) {
-    // Insert Dispatch Actions here~
+    case "SET_PLAYER_DATA":
+      return {
+        ...state,
+        player: {
+          name: action.payload.player_name,
+          color: action.payload.player_color
+        }
+      }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -16,10 +23,17 @@ function userDataReducer(state: ReducerState, action: ReducerAction): any {
 }
 function UserProvider({ children }: Props) {
   const [state, dispatch] = React.useReducer(userDataReducer, {
-    //Initial preload state here~
+    lobby: "",
+    player: "",
+    prompts: []
   });
   React.useEffect(() => {
     //Initial loading here, can be async~
+    const player_data = {
+      player_name: localStorage.getItem("player_name"),
+      player_color: "#399AAF"
+    }
+    dispatch({type: "SET_PLAYER_DATA", payload: player_data});
   }, []);
   const value = { state, dispatch };
   return <UserContext.Provider value={value}> {children}</UserContext.Provider>;
