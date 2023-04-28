@@ -1,36 +1,16 @@
 import styles from '@/styles/WordClaims.module.css';
+import WordClaim from './WordClaim';
 
 const WordClaims = (props: any) => {
   return (
     <div role="group" className={styles.wordClaims}>
-      <label>
-        <input type="radio" name="wordClaim" value="Animal" />
-        Animal
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Adjective" />
-        Adjective
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Adjective" />
-        Adjective
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Time of Day" />
-        Time of Day
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Adjective" />
-        Adjective
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Adjective" />
-        Adjective
-      </label>
-      <label>
-        <input type="radio" name="wordClaim" value="Noun" />
-        Noun
-      </label>
+      <WordClaim type='Animal' claimed_by='' status='claimed' text='' />
+      <WordClaim type='Adjective' claimed_by='' status='open' text='' />
+      <WordClaim type='Adjective' claimed_by='' status='open' text='' />
+      <WordClaim type='Time of Day' claimed_by='' status='open' text='' />
+      <WordClaim type='Adjective' claimed_by='' status='open' text='' />
+      <WordClaim type='Adjective' claimed_by='' status='open' text='' />
+      <WordClaim type='Noun' claimed_by='' status='open' text='' />
     </div>
   );
 };
