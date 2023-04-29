@@ -12,8 +12,42 @@ function userDataReducer(state: ReducerState, action: ReducerAction): any {
       return {
         ...state,
         player: {
-          name: action.payload.player_name,
-          color: action.payload.player_color
+          name: action.payload.name,
+          color: action.payload.color
+        }
+      }
+    case "SET_LOBBY_DATA":
+      return {
+        ...state,
+        lobby: {
+          id: "12345",
+          created_at: "A time",
+          phase: "suggesting",
+          artUrl: null,
+          prompts: [
+            "The majestic",
+            {
+              type: "animal",
+              claimed_by: "",
+              status: "open",
+              text: ""
+            },
+            "soared through the sky, its",
+            {
+              type: "adjective",
+              claimed_by: "",
+              status: "open",
+              text: ""
+            },
+            "wings shimmering in the",
+            {
+              type: "time of day",
+              claimed_by: "",
+              status: "open",
+              text: ""
+            },
+            "light."
+          ]
         }
       }
     default: {
@@ -30,8 +64,8 @@ function UserProvider({ children }: Props) {
   React.useEffect(() => {
     //Initial loading here, can be async~
     const player_data = {
-      player_name: localStorage.getItem("player_name"),
-      player_color: "#399AAF"
+      name: localStorage.getItem("player_name"),
+      color: "#399AAF"
     }
     dispatch({type: "SET_PLAYER_DATA", payload: player_data});
   }, []);
