@@ -1,6 +1,6 @@
 export interface Lobby {
-  id: string;
-  created_at: string;
+  id?: string;
+  created_at?: string;
   code: string;
   phase: "suggesting" | "generating" | "finished";
   artUrl?: string;
