@@ -13,6 +13,8 @@ export interface PromptFragment {
   status: "open" | "claimed" | "submitted";
 }
 
+export type Prompt = (PromptFragment|string)[]
+
 export interface Player {
   name: string;
   color: string;
