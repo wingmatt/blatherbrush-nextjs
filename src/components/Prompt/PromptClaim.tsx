@@ -1,4 +1,4 @@
-import { PromptFragment } from "../../types";
+import { PromptFragment } from "../../../types";
 import { SetStateAction, useEffect, useState } from "react";
 
 const claimWord = (event: React.ChangeEvent<HTMLInputElement>, setSelected: React.Dispatch<React.SetStateAction<boolean>>) => {
@@ -6,7 +6,7 @@ const claimWord = (event: React.ChangeEvent<HTMLInputElement>, setSelected: Reac
   // claim this word by th
   setSelected(true);
 }
-const WordClaim = ({type, claimed_by, status}: PromptFragment) => {
+const PromptClaim = ({type, claimed_by, status}: PromptFragment) => {
   const [selected, setSelected] = useState(false)
   const [classes, setClasses] = useState("");
   const [disabled, setDisabled] = useState(false)
@@ -30,4 +30,4 @@ const WordClaim = ({type, claimed_by, status}: PromptFragment) => {
   )
 }
 
-export default WordClaim
+export default PromptClaim

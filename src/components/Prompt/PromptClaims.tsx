@@ -1,5 +1,5 @@
 import styles from '@/styles/WordClaims.module.css';
-import WordClaim from './WordClaim';
+import WordClaim from './PromptClaim';
 
 const WordClaims = (props: any) => {
   return (
