@@ -25,7 +25,7 @@ export const getLobbyData = async (
 };
 
 // Get the most chaotic bit of the current time, and turn it into a unique set of 4 letters/numbers
-const newLobbyCode = (): string => Date.now().toString(36).slice(-4);
+const newLobbyCode = (): string => Date.now().toString(36).slice(-4).toUpperCase();
 
 export const createLobby = async (
   playerName: string
