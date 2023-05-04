@@ -20,7 +20,8 @@ export const getLobbyData = async (lobbyCode: string) => {
   }
 };
 
-const newLobbyCode = (): string => (+new Date()).toString(36).slice(-4);
+// Get the most chaotic bit of the current time, and turn it into a unique set of 4 letters/numbers
+const newLobbyCode = (): string => Date.now().toString(36).slice(-4);
 
 export const createLobby = async (playerName: string) => {
   try {
