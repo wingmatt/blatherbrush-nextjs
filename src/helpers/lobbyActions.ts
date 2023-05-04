@@ -1,11 +1,15 @@
 import { supabase } from "@/helpers/supabaseClient";
+import { Lobby } from "../../types";
 
-export const getLobbyData = async (lobbyCode: string) => {
+export const getLobbyData = async (
+  lobbyCode: string
+): Promise<Lobby | ErrorEvent> => {
   try {
     let { data, error, status } = await supabase
       .from("lobby")
       .select(`code, phase, artUrl, sentence`)
-      .eq("code", lobbyCode);
+      .eq("code", lobbyCode)
+      .single();
 
     if (error && status !== 406) {
       throw error;
@@ -23,17 +27,17 @@ export const getLobbyData = async (lobbyCode: string) => {
 // Get the most chaotic bit of the current time, and turn it into a unique set of 4 letters/numbers
 const newLobbyCode = (): string => Date.now().toString(36).slice(-4);
 
-export const createLobby = async (playerName: string) => {
+export const createLobby = async (
+  playerName: string
+): Promise<Lobby | ErrorEvent> => {
   try {
     const lobbyCode = newLobbyCode();
-    let { data, error, status } = await supabase
-      .from("lobby")
-      .insert({
-        code: lobbyCode,
-        phase: "suggesting",
-        // TODO: Sort this BUSINESS out!!!
-        sentence: "",
-      })
+    let { data, error, status } = await supabase.from("lobby").insert({
+      code: lobbyCode,
+      phase: "suggesting",
+      // TODO: Sort this BUSINESS out!!!
+      sentence: "",
+    });
     if (error && status !== 406) {
       throw error;
     }
@@ -46,7 +50,9 @@ export const createLobby = async (playerName: string) => {
   }
 };
 
-export const deleteLobby = async (lobbyCode: string) => {
+export const deleteLobby = async (
+  lobbyCode: string
+): Promise<Lobby | ErrorEvent> => {
   try {
     let { data, error, status } = await supabase
       .from("lobby")
