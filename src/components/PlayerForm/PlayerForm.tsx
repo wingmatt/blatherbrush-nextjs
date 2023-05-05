@@ -1,8 +1,8 @@
 import { useState } from "react";
-import PromptClaim from "./Prompt/PromptClaim";
+import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
-import { PromptFragment, Prompt } from "../../types";
+import { PromptFragment, Prompt } from "../../../types";
 
 const claimablePrompts = (fullPrompt: Prompt) => {
   return fullPrompt.filter((prompt: PromptFragment | string) => (typeof prompt !== "string")) as PromptFragment[]

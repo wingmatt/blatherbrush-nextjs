@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'
-import PlayerForm from '@/components/PlayerForm'
+import PlayerForm from '@/components/PlayerForm/PlayerForm'
 import { UserProvider } from '@/helpers/UserProvider'
 
 const inter = Inter({ subsets: ['latin'] })
