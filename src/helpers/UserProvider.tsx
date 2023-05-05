@@ -21,6 +21,7 @@ function userDataReducer(state: ReducerState, action: ReducerAction): any {
         ...state,
         lobby: {
           id: "12345",
+          code: "RX59",
           created_at: "A time",
           phase: "suggesting",
           artUrl: null,
