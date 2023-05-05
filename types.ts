@@ -12,8 +12,9 @@ export interface Player {
   color: string;
 }
 export interface PromptFragment {
+  id?: string;
   type: string;
-  text: string;
+  text?: string;
   claimed_by: string;
   status: "open" | "claimed" | "submitted";
 }
