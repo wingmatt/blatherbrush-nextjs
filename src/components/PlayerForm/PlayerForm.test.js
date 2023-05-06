@@ -28,14 +28,12 @@ const testPrompt = [
   },
   "light."
 ]
+const mockProviderState = {
+    state: {prompts: testPrompt}
+  }
 
 test("claimablePrompts correctly filters full prompt", () => {
-  jest.mock('../../helpers/UserProvider', ()=> {
-    useUserData: () => {
-      return {prompts: testPrompt}
-    }
-  })
-  render(<UserProvider><PlayerForm/></UserProvider>)
+  render(<UserProvider value={mockProviderState}><PlayerForm/></UserProvider>)
   const promptClaims = screen.getByRole("radio");
   expect(promptClaims).length.toBe(3);
 })
