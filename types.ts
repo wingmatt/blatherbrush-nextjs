@@ -4,7 +4,7 @@ export interface Lobby {
   code: string;
   phase: "suggesting" | "generating" | "finished";
   artUrl?: string;
-  sentence: (string | PromptFragment)[];
+  prompts: (string | PromptFragment)[];
 }
 
 export interface Player {
