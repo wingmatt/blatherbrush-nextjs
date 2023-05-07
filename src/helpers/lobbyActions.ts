@@ -1,4 +1,4 @@
-import { supabase } from "@/helpers/supabaseClient";
+import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
 import { Lobby } from "../../types";
 import { randomNewPrompt } from "./promptActions";
 
@@ -35,23 +35,8 @@ export const createLobby = async (playerName: string): Promise<Lobby> => {
     phase: "suggesting",
     prompts: randomNewPrompt(),
   };
-  try {
-    let { data, error, status } = await supabase
-      .from("lobby")
-      .insert(newLobbyData)
-      .select()
-      .single();
-    console.log(data, status);
-    if (error && status !== 406) {
-      throw error;
-    }
-    if (data) {
-      return data as Lobby;
-    } else throw error;
-  } catch (error: any) {
-    console.error(error.message);
-    throw error;
-  }
+
+  return await insertAndReturn("lobby", newLobbyData) as Lobby;
 };
 
 export const deleteLobby = async (
