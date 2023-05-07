@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { NextRouter, useRouter } from "next/router";
 import styles from "@/styles/StartForm.module.css";
+import { Player } from "../../types";
+
+import { createLobby } from "@/helpers/lobbyActions";
 
 const handleSubmit = async (
   event: React.FormEvent<HTMLFormElement>,
@@ -14,6 +17,15 @@ const handleSubmit = async (
     query: { lobbyCode: form.lobby_code },
   });
 };
+
+const hostLobby = async (player_name: Player['name'], router: NextRouter) => {
+  await createLobby(player_name).then((response)=> {
+    router.push({
+      pathname: "play/[lobbyCode]",
+      query: { lobbyCode: response.code },
+    });
+  });
+}
 
 const StartForm = () => {
   const [form, setForm] = useState({
@@ -56,7 +68,7 @@ const StartForm = () => {
         </button>
       </div>
       <span>-OR-</span>
-      <button type="button" id="hostLobby" className="button">
+      <button type="button" id="hostLobby" onClick={() => hostLobby(form.player_name, router)} className="button">
         Host
       </button>
     </form>

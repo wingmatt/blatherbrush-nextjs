@@ -30,19 +30,20 @@ const newLobbyCode = (): string => Date.now().toString(36).slice(-4).toUpperCase
 
 export const createLobby = async (
   playerName: string
-): Promise<Lobby | ErrorEvent> => {
+): Promise<Lobby> => {
+  const newLobbyData = {
+    code: newLobbyCode(),
+    phase: "suggesting",
+    prompts: randomNewPrompt(),
+  }
   try {
-    const lobbyCode = newLobbyCode();
-    let { data, error, status } = await supabase.from("lobby").insert({
-      code: lobbyCode,
-      phase: "suggesting",
-      prompts: randomNewPrompt(),
-    });
+    let { data, error, status } = await supabase.from("lobby").insert(newLobbyData);
+    console.log(data, status);
     if (error && status !== 406) {
       throw error;
     }
-    if (data) {
-      return data;
+    if (status === 201) {
+      return newLobbyData as Lobby;
     } else throw error;
   } catch (error: any) {
     console.error(error.message);
