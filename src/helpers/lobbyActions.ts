@@ -38,13 +38,15 @@ export const createLobby = async (playerName: string): Promise<Lobby> => {
   try {
     let { data, error, status } = await supabase
       .from("lobby")
-      .insert(newLobbyData);
+      .insert(newLobbyData)
+      .select()
+      .single();
     console.log(data, status);
     if (error && status !== 406) {
       throw error;
     }
-    if (status === 201) {
-      return newLobbyData as Lobby;
+    if (data) {
+      return data as Lobby;
     } else throw error;
   } catch (error: any) {
     console.error(error.message);
