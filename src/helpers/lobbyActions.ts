@@ -1,5 +1,6 @@
 import { supabase } from "@/helpers/supabaseClient";
 import { Lobby } from "../../types";
+import { randomNewPrompt } from "./promptActions";
 
 export const getLobbyData = async (
   lobbyCode: string
@@ -7,7 +8,7 @@ export const getLobbyData = async (
   try {
     let { data, error, status } = await supabase
       .from("lobby")
-      .select(`code, phase, artUrl, sentence`)
+      .select(`code, phase, artUrl, prompts`)
       .eq("code", lobbyCode)
       .single();
 
@@ -16,7 +17,7 @@ export const getLobbyData = async (
     }
 
     if (data) {
-      return data;
+      return data as Lobby;
     } else throw error;
   } catch (error: any) {
     console.error(error.message);
@@ -35,8 +36,7 @@ export const createLobby = async (
     let { data, error, status } = await supabase.from("lobby").insert({
       code: lobbyCode,
       phase: "suggesting",
-      // TODO: Sort this BUSINESS out!!!
-      sentence: "",
+      prompts: randomNewPrompt(),
     });
     if (error && status !== 406) {
       throw error;
