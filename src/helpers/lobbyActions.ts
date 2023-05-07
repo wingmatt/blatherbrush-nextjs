@@ -26,18 +26,19 @@ export const getLobbyData = async (
 };
 
 // Get the most chaotic bit of the current time, and turn it into a unique set of 4 letters/numbers
-const newLobbyCode = (): string => Date.now().toString(36).slice(-4).toUpperCase();
+const newLobbyCode = (): string =>
+  Date.now().toString(36).slice(-4).toUpperCase();
 
-export const createLobby = async (
-  playerName: string
-): Promise<Lobby> => {
+export const createLobby = async (playerName: string): Promise<Lobby> => {
   const newLobbyData = {
     code: newLobbyCode(),
     phase: "suggesting",
     prompts: randomNewPrompt(),
-  }
+  };
   try {
-    let { data, error, status } = await supabase.from("lobby").insert(newLobbyData);
+    let { data, error, status } = await supabase
+      .from("lobby")
+      .insert(newLobbyData);
     console.log(data, status);
     if (error && status !== 406) {
       throw error;
