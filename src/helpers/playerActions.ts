@@ -10,7 +10,7 @@ export const createPlayer = async (player: Player) => {
     color: player.color
   }
 
-  return await insertAndReturn("lobby", newPlayerData) as Player;
+  return await insertAndReturn("player", newPlayerData) as Player;
 }
 
 // Update player (name, color) based on ID
