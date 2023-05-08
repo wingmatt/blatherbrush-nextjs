@@ -3,6 +3,7 @@ import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment, Prompt } from "../../../types";
+import NameForm from "../NameForm";
 
 const claimablePrompts = (fullPrompt: Prompt) => {
   return fullPrompt.filter((prompt: PromptFragment | string) => (typeof prompt !== "string")) as PromptFragment[]
@@ -13,7 +14,8 @@ const PlayerForm = () => {
   const [form, setForm] = useState({
     data: {},
   });
-  return (
+
+  if (!state.player.id) return <NameForm/>; else return (
     <form className={styles.playerForm}>
       <h2>1 • Claim your word!</h2>
       <div role="group" className={styles.wordClaims}>
