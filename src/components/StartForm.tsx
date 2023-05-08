@@ -4,6 +4,7 @@ import styles from "@/styles/StartForm.module.css";
 import { Player } from "../../types";
 
 import { createLobby } from "@/helpers/lobbyActions";
+import { createPlayer } from "@/helpers/playerActions";
 
 const handleSubmit = async (
   event: React.FormEvent<HTMLFormElement>,
@@ -27,10 +28,13 @@ const hostLobby = async (player_name: Player['name'], router: NextRouter) => {
   });
 }
 
+
+
 const StartForm = () => {
   const [form, setForm] = useState({
     player_name: "",
     lobby_code: "",
+    player: {}
   });
   useEffect(() => {
     localStorage.setItem("player_name", form.player_name);
@@ -42,6 +46,19 @@ const StartForm = () => {
       [event.target.name]: event.target.value,
     }));
   };
+  const updatePlayer = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!form.player)
+    // TODO: Update player if ID is present. Otherwise, create it. Can we use Upsert to simplify this?
+    await createPlayer({
+      name: form.player_name,
+      color: "#399AAF"
+    }).then((response) => {
+      setForm((prevState) => ({
+        ...prevState,
+        player: response,
+      }));
+    })
+  }
   return (
     <form
       className={styles.start}
@@ -53,6 +70,7 @@ const StartForm = () => {
         name="player_name"
         value={form.player_name}
         onChange={(event) => handleChange(event)}
+        onBlur={(event) => updatePlayer(event)}
       />
       <h2>Lobby Code?</h2>
       <div>
