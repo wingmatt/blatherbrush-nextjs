@@ -1,5 +1,4 @@
 import * as React from "react";
-import { supabase } from "./supabaseClient";
 import { ReducerState, ReducerAction, Props, Lobby, PromptFragment, Player } from "../../types";
 
 const UserContext = React.createContext<
@@ -12,6 +11,7 @@ function userDataReducer(state: ReducerState, action: ReducerAction): any {
       return {
         ...state,
         player: {
+          id: action.payload.id,
           name: action.payload.name,
           color: action.payload.color
         }
@@ -33,7 +33,7 @@ function UserProvider({ children }: Props) {
   });
   React.useEffect(() => {
     //Initial loading here, can be async~
-    dispatch({type: "SET_PLAYER_DATA", payload: playerDemoData});
+    dispatch({type: "SET_PLAYER_DATA", payload: localPlayerData});
     dispatch({type:"SET_LOBBY_DATA", payload: lobbyDemoData});
   }, []);
   const value = { state, dispatch };
@@ -52,9 +52,10 @@ export { UserProvider, useUserData };
 
 // Test Data below
 
-const playerDemoData = {
+const localPlayerData = {
+  id: typeof window !== "undefined" ? localStorage.getItem("player_id") : null,
   name: typeof window !== "undefined" ? localStorage.getItem("player_name") : null,
-  color: "#399AAF"
+  color: typeof window !== "undefined" ? localStorage.getItem("player_color") : null,
 }
 
 const lobbyDemoData = {
