@@ -1,26 +1,41 @@
-import { PropsWithChildren  } from 'react'
-import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import Header from '@/components/Header'
-import { UserProvider } from '@/helpers/UserProvider'
+import { ReactNode } from "react";
+import Head from "next/head";
+import { Inter } from "next/font/google";
+import Header from "@/components/Header";
+import { useEffect } from 'react'
+import { getLobbyData } from '@/helpers/lobbyActions'
+import { useUserData } from '@/helpers/UserProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-const LobbyLayout = ({children}: PropsWithChildren) => {
+type LobbyLayoutProps = {
+  lobbyCode: string,
+  children: ReactNode
+}
+
+const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
+  const {dispatch} = useUserData();
+  useEffect(()=> {
+    getLobbyData(lobbyCode).then(lobbyData => {
+      console.log(lobbyData);
+      dispatch({type: "SET_LOBBY_DATA", payload: lobbyData})
+    });
+  }, [])
   return (
-    <UserProvider>
+    <>
       <Head>
         <title>Blatherbrush</title>
-        <meta name="description" content="Make wacky art with your brush buddies!" />
+        <meta
+          name="description"
+          content="Make wacky art with your brush buddies!"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header/>
-      <main className={` ${inter.className}`}>
-        {children}
-      </main>
-    </UserProvider>
-  )
-}
+      <Header />
+      <main className={` ${inter.className}`}>{children}</main>
+    </>
+  );
+};
 
-export default LobbyLayout
+export default LobbyLayout;
