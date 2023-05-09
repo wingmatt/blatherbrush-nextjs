@@ -6,18 +6,19 @@ import LobbyLayout from '@/components/LobbyLayout'
 
 import { UserProvider } from "@/helpers/UserProvider";
 
-
-
 export default function PlayLobby() {
   const router = useRouter()
-  const lobbyCode = router.query.lobbyCode as string;
-  return (
+  if (router.isReady) return (
     <UserProvider>
-      <LobbyLayout lobbyCode={lobbyCode}>
+      <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
         <Title/>
         <PlayerForm/>
         <Canvas url="no" prompt="no"/>
       </LobbyLayout>
+    </UserProvider>
+  ); else return (
+    <UserProvider>
+      <span>loading...!</span>
     </UserProvider>
   )
 }
