@@ -8,8 +8,9 @@ export const updatePrompt = async (lobbyData: Lobby, newPrompt: PromptFragment, 
     let { data, error, status } = await supabase
       .from("lobby")
       .update(lobbyData)
-      .eq("code", lobbyData.code);
-
+      .eq("code", lobbyData.code)
+      .select()
+      .single();
     if (error && status !== 406) {
       throw error;
     }
@@ -52,6 +53,12 @@ const possiblePrompts: Prompt[] = [
       status: "open",
       text: "",
     },
-    "light.",
+    "light. It was pretty",
+    {
+      type: "adjective",
+      claimed_by: "",
+      status: "open",
+      text: "",
+    },
   ],
 ];
