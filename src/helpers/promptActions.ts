@@ -16,7 +16,7 @@ export const updatePrompt = async (lobbyData: Lobby, newPrompt: PromptFragment, 
     }
 
     if (data) {
-      return data;
+      return data as Lobby;
     } else throw error;
   } catch (error: any) {
     console.error(error.message);
