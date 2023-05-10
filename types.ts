@@ -13,7 +13,7 @@ export interface Player {
   color: string;
 }
 export interface PromptFragment {
-  id?: string;
+  arrayIndex?: number;
   type: string;
   text?: string;
   claimed_by: string;
@@ -22,6 +22,10 @@ export interface PromptFragment {
 
 export type Prompt = (PromptFragment | string)[];
 
+export type Context = {
+  lobby: Lobby,
+  player: Player
+}
 export interface Props {
   children: React.ReactNode;
 }
