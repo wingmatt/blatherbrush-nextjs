@@ -5,10 +5,6 @@ import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment, Prompt } from "../../../types";
 import NameForm from "../NameForm";
 
-const claimablePrompts = (fullPrompt: Prompt) => {
-  return fullPrompt.filter((prompt: PromptFragment | string) => (typeof prompt !== "string")) as PromptFragment[]
-}
-
 const PlayerForm = () => {
   const {state} = useUserData();
   const [form, setForm] = useState({
