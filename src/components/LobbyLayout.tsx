@@ -20,7 +20,7 @@ const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
       console.log(lobbyData);
       dispatch({type: "SET_LOBBY_DATA", payload: lobbyData})
     });
-  }, [])
+  }, [dispatch, lobbyCode])
   return (
     <>
       <Head>
