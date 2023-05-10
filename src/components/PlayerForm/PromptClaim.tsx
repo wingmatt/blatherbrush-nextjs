@@ -20,9 +20,8 @@ const claimWord = async (
   const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
   newPrompt.status = "claimed";
   newPrompt.claimed_by = player_id;
-  await updatePrompt(state.lobby, newPrompt, arrayIndex).then((updatedLobby) =>
-    dispatch({ type: "SET_LOBBY_DATA", payload: updatedLobby })
-  );
+  dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
+  await updatePrompt(state.lobby, newPrompt, arrayIndex);
 };
 
 const PromptClaim = ({
