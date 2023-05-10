@@ -1,17 +1,27 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment, Prompt } from "../../../types";
 import NameForm from "../NameForm";
 import { isClaimedPrompt } from "@/helpers/promptActions";
+import { updateLobby } from "@/helpers/lobbyActions";
 
 
 const PlayerForm = () => {
   const {state, dispatch} = useUserData();
   const [promptSubmission, setPromptSumbission] = useState("");
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    const player_id = state.player.id as string;
+    const claimed_prompt = state.lobby.prompts.find(prompt => isClaimedPrompt(prompt, player_id)) as PromptFragment
+    claimed_prompt.text = promptSubmission;
+    claimed_prompt.status = "submitted";
+    dispatch({type: "SET_LOBBY_DATA", payload: state.lobby})
+    await updateLobby(state.lobby);
+  }
   if (!state.player.id) return <NameForm/>; else return (
-    <form className={styles.playerForm}>
+    <form className={styles.playerForm} onSubmit={(event: FormEvent) => handleSubmit(event)}>
       <h2>1 • Claim your prompt!</h2>
       <div role="group" className={styles.wordClaims}>
       {state.lobby.prompts ? state.lobby.prompts.map((promptClaim, index) => (typeof(promptClaim) !== "string") ? <PromptClaim key={index} arrayIndex={index} type={promptClaim.type} status={promptClaim.status} claimed_by={promptClaim.claimed_by}/>: ""): ""}

@@ -39,6 +39,27 @@ export const createLobby = async (playerName: string): Promise<Lobby> => {
   return await insertAndReturn("lobby", newLobbyData) as Lobby;
 };
 
+export const updateLobby = async(lobbyData: Lobby): Promise<Lobby> => {
+  try {
+    let { data, error, status } = await supabase
+      .from("lobby")
+      .update(lobbyData)
+      .eq("code", lobbyData.code)
+      .select()
+      .single();
+    if (error && status !== 406) {
+      throw error;
+    }
+
+    if (data) {
+      return data as Lobby;
+    } else throw error;
+  } catch (error: any) {
+    console.error(error.message);
+    throw error;
+  }
+}
+
 export const deleteLobby = async (
   lobbyCode: string
 ): Promise<Lobby | ErrorEvent> => {
