@@ -1,0 +1,30 @@
+
+
+.prompt {
+  flex: 1 0 40%;
+  text-align: center;
+  padding: 8px 16px;
+  background: #696969;
+  box-shadow: 2px 2px 0 var(--color-foreground);
+  border: 1px solid var(--color-foreground);
+  color: var(--color-foreground);
+  border-radius: 8px;
+}
+
+.prompt input[type="radio"] {
+  visibility: hidden;
+  width: 0;
+  position: absolute;
+}
+
+.prompt:last-of-type {
+  flex-grow: 0;
+}
+
+.shouldBeDisabled {
+  text-decoration: line-through;
+}
+
+.claimedByPlayer {
+  background: var(--player-color);
+}
