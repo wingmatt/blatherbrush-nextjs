@@ -1,5 +1,5 @@
 import { supabase } from "@/helpers/supabaseClient";
-import { Lobby, PromptFragment, Prompt } from "../../types";
+import { Lobby, Player, PromptFragment, Prompt } from "../../types";
 
 // Update a prompt claim: its claim, status, and/or text
 export const updatePrompt = async (lobbyData: Lobby, newPrompt: PromptFragment, newPromptIndex: number): Promise<Lobby> => {
@@ -62,3 +62,7 @@ const possiblePrompts: Prompt[] = [
     },
   ],
 ];
+
+export const isClaimedPrompt = (prompt: PromptFragment | string, player_id: Player["id"]): Boolean => {
+  return (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by === player_id)
+}
