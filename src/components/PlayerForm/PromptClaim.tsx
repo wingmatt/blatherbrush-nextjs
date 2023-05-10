@@ -14,6 +14,7 @@ const claimWord = async (
     if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by === player_id) {
       prompt.status = "open";
       prompt.claimed_by = "";
+      prompt.text = "";
     }
   });
   const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
