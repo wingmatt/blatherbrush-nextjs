@@ -19,7 +19,7 @@ const PlayerForm = () => {
     <form className={styles.playerForm}>
       <h2>1 • Claim your word!</h2>
       <div role="group" className={styles.wordClaims}>
-      {state.lobby.prompts ? claimablePrompts(state.lobby.prompts).map((promptClaim) => <PromptClaim key={promptClaim.id} type={promptClaim.type} status={promptClaim.status} claimed_by={promptClaim.claimed_by}/>): ""}
+      {state.lobby.prompts ? state.lobby.prompts.map((promptClaim, index) => (typeof(promptClaim) !== "string") ? <PromptClaim key={index} arrayIndex={index} type={promptClaim.type} status={promptClaim.status} claimed_by={promptClaim.claimed_by}/>: ""): ""}
       </div>
       <label>
         <h2>2 • What&apos;s the word?</h2>
