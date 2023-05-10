@@ -1,33 +1,49 @@
-import { PromptFragment } from "../../../types";
-import { SetStateAction, useEffect, useState } from "react";
+import { Context, PromptFragment } from "../../../types";
+import { useUserData } from "@/helpers/UserProvider";
+import { updatePrompt } from "@/helpers/promptActions";
+import styles from '@/styles/PromptClaim.module.css'
 
-const claimWord = (event: React.ChangeEvent<HTMLInputElement>, setSelected: React.Dispatch<React.SetStateAction<boolean>>) => {
-  // set this word to "selected" by the device's player, locally and on supabase
-  // claim this word by th
-  setSelected(true);
-}
-const PromptClaim = ({type, claimed_by, status}: PromptFragment) => {
-  const [selected, setSelected] = useState(false)
-  const [classes, setClasses] = useState("");
-  const [disabled, setDisabled] = useState(false)
-  const player_id = "YES";
-  useEffect(()=> {
-    if (status !== "open") {
-      if ((selected)) {
-        setClasses("word highlight");
-      }
-      else  {
-        setClasses("word disabled")
-        setDisabled(true);
-      }
-    }
-  }, [selected, status])
+const claimWord = async (
+  state: Context,
+  // TODO: Refine dispatch type
+  dispatch: any,
+  arrayIndex: number
+) => {
+  const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
+  newPrompt.status = "claimed";
+  newPrompt.claimed_by = state.player.id as string;
+  await updatePrompt(state.lobby, newPrompt, arrayIndex).then((updatedLobby) =>
+    dispatch({ type: "SET_LOBBY_DATA", payload: updatedLobby })
+  );
+};
+
+const PromptClaim = ({
+  type,
+  claimed_by,
+  status,
+  arrayIndex,
+}: PromptFragment) => {
+  const { state, dispatch } = useUserData();
+  const claimedByPlayer = state.player.id === claimed_by;
+  const shouldBeDisabled =
+    (status === "claimed" && !claimedByPlayer) || status === "submitted";
   return (
-    <label className={classes}  >
-      <input type="radio" checked={selected} name="wordClaim" onChange={(event) => claimWord(event, setSelected)} value="Adjective" disabled={disabled} />
+    <label
+      className={`${styles.prompt} ${claimedByPlayer ? styles.claimedByPlayer : ""} ${
+        shouldBeDisabled ? styles.shouldBeDisabled : ""
+      } ${styles[status]}`}
+    >
+      <input
+        type="radio"
+        checked={claimedByPlayer}
+        name="wordClaim"
+        onChange={() => claimWord(state, dispatch, arrayIndex)}
+        value="Adjective"
+        disabled={shouldBeDisabled}
+      />
       {type}
     </label>
-  )
-}
+  );
+};
 
-export default PromptClaim
+export default PromptClaim;
