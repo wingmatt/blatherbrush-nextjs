@@ -23,6 +23,7 @@
 
 .shouldBeDisabled {
   text-decoration: line-through;
+  opacity: .5;
 }
 
 .claimedByPlayer {
