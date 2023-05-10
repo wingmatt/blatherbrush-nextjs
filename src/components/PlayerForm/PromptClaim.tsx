@@ -9,9 +9,16 @@ const claimWord = async (
   dispatch: any,
   arrayIndex: number
 ) => {
+  const player_id = state.player.id as string;
+  state.lobby.prompts.forEach((prompt) => {
+    if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by === player_id) {
+      prompt.status = "open";
+      prompt.claimed_by = "";
+    }
+  });
   const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
   newPrompt.status = "claimed";
-  newPrompt.claimed_by = state.player.id as string;
+  newPrompt.claimed_by = player_id;
   await updatePrompt(state.lobby, newPrompt, arrayIndex).then((updatedLobby) =>
     dispatch({ type: "SET_LOBBY_DATA", payload: updatedLobby })
   );
@@ -37,7 +44,7 @@ const PromptClaim = ({
         type="radio"
         checked={claimedByPlayer}
         name="wordClaim"
-        onChange={() => claimWord(state, dispatch, arrayIndex)}
+        onChange={() => claimWord(state, dispatch, arrayIndex as number)}
         value="Adjective"
         disabled={shouldBeDisabled}
       />
