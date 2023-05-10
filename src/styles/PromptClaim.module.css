@@ -9,6 +9,7 @@
   border: 1px solid var(--color-foreground);
   color: var(--color-foreground);
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .prompt input[type="radio"] {
