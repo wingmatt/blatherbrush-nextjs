@@ -81,3 +81,13 @@ export const deleteLobby = async (
     throw error;
   }
 };
+
+const maybeGeneratingPhase = (lobbyData: Lobby) => {
+  // Check if all prompts are submitted
+  const allPromptsSubmitted = (lobbyData.prompts.find((prompt) => (typeof prompt === "object" && prompt.status !== "submitted")))
+  if (allPromptsSubmitted) {
+    // Send data to OpenAI.
+    // Update lobby to be in "generating" phase.
+    // When the call completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
+  }
+}
