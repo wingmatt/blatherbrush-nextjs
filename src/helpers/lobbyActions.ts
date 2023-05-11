@@ -1,5 +1,5 @@
 import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
-import { Lobby } from "../../types";
+import { Lobby, ReducerAction } from "../../types";
 import { randomNewPrompt } from "./promptActions";
 
 export const getLobbyData = async (
@@ -82,12 +82,15 @@ export const deleteLobby = async (
   }
 };
 
-const maybeGeneratingPhase = (lobbyData: Lobby) => {
+export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
   // Check if all prompts are submitted
-  const allPromptsSubmitted = (lobbyData.prompts.find((prompt) => (typeof prompt === "object" && prompt.status !== "submitted")))
+  const allPromptsSubmitted = !(lobbyData.prompts.find((prompt) => (typeof prompt === "object" && prompt.status !== "submitted")))
+  console.log(allPromptsSubmitted)
   if (allPromptsSubmitted) {
-    // Send data to OpenAI.
-    // Update lobby to be in "generating" phase.
-    // When the call completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
+    // TODO: Send data to OpenAI here.
+    lobbyData.phase = "generating";
+    dispatch({type: "SET_LOBBY_DATA", payload: lobbyData});
+    // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
+    await updateLobby(lobbyData);
   }
 }

@@ -5,7 +5,7 @@ import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment, Prompt } from "../../../types";
 import NameForm from "../NameForm";
 import { isClaimedPrompt } from "@/helpers/promptActions";
-import { updateLobby } from "@/helpers/lobbyActions";
+import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
 
 const PlayerForm = () => {
@@ -18,7 +18,9 @@ const PlayerForm = () => {
     claimed_prompt.text = promptSubmission;
     claimed_prompt.status = "submitted";
     dispatch({type: "SET_LOBBY_DATA", payload: state.lobby})
-    await updateLobby(state.lobby);
+    await updateLobby(state.lobby).then(async (newLobbyData)=> {
+      await maybeGeneratingPhase(newLobbyData, dispatch);
+    });
   }
   if (!state.player.id) return <NameForm/>; else return (
     <form className={styles.playerForm} onSubmit={(event: FormEvent) => handleSubmit(event)}>
