@@ -94,3 +94,19 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
     await updateLobby(lobbyData);
   }
 }
+
+export const subscribeToLobbyUpdates = async (lobbyCode: Lobby["code"], dispatch: any) => {
+  const channel = supabase
+  .channel('lobbyUpdates')
+  .on(
+    'postgres_changes',
+    {
+      event: 'UPDATE',
+      schema: 'public',
+      table: 'lobby',
+      filter: `code=eq.${lobbyCode}`,
+    },
+    (updatedLobby) => dispatch({type: "SET_LOBBY_DATA", payload: updatedLobby.new})
+  )
+  .subscribe()
+}

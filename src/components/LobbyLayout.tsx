@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import { useEffect } from 'react'
-import { getLobbyData } from '@/helpers/lobbyActions'
+import { getLobbyData, subscribeToLobbyUpdates } from '@/helpers/lobbyActions'
 import { useUserData } from '@/helpers/UserProvider'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,6 +19,7 @@ const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
     getLobbyData(lobbyCode).then(lobbyData => {
       console.log(lobbyData);
       dispatch({type: "SET_LOBBY_DATA", payload: lobbyData})
+      subscribeToLobbyUpdates(lobbyCode, dispatch);
     });
   }, [dispatch, lobbyCode])
   return (
