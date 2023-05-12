@@ -7,36 +7,63 @@ import NameForm from "../NameForm";
 import { isClaimedPrompt } from "@/helpers/promptActions";
 import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
-
 const PlayerForm = () => {
-  const {state, dispatch} = useUserData();
+  const { state, dispatch } = useUserData();
   const [promptSubmission, setPromptSumbission] = useState("");
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const player_id = state.player.id as string;
-    const claimed_prompt = state.lobby.prompts.find(prompt => isClaimedPrompt(prompt, player_id)) as PromptFragment
+    const claimed_prompt = state.lobby.prompts.find((prompt) =>
+      isClaimedPrompt(prompt, player_id)
+    ) as PromptFragment;
     claimed_prompt.text = promptSubmission;
     claimed_prompt.status = "submitted";
-    dispatch({type: "SET_LOBBY_DATA", payload: state.lobby})
-    await updateLobby(state.lobby).then(async (newLobbyData)=> {
+    dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
+    await updateLobby(state.lobby).then(async (newLobbyData) => {
       await maybeGeneratingPhase(newLobbyData, dispatch);
     });
-  }
-  if (!state.player.id) return <NameForm/>; else return (
-    <form className={styles.playerForm} onSubmit={(event: FormEvent) => handleSubmit(event)}>
-      <h2>1 • Claim your prompt!</h2>
-      <div role="group" className={styles.wordClaims}>
-      {state.lobby.prompts ? state.lobby.prompts.map((promptClaim, index) => (typeof(promptClaim) !== "string") ? <PromptClaim key={index} arrayIndex={index} type={promptClaim.type} status={promptClaim.status} claimed_by={promptClaim.claimed_by}/>: ""): ""}
-      </div>
-      <label>
-        <h2>2 • Say something cool!</h2>
-        <input type="text" name="promptSubmission" value={promptSubmission} onChange={(event: ChangeEvent<HTMLInputElement>) => setPromptSumbission(event.target.value)}/>
-      </label>
-      <button type="submit" className="button highlight">
-        3 • Send it over!
-      </button>
-    </form>
-  );
+  };
+  if (!state.player.id) return <NameForm />;
+  else if (state.lobby.phase === "suggesting")
+    return (
+      <form
+        className={styles.playerForm}
+        onSubmit={(event: FormEvent) => handleSubmit(event)}
+      >
+        <h2>1 • Claim your prompt!</h2>
+        <div role="group" className={styles.wordClaims}>
+          {state.lobby.prompts
+            ? state.lobby.prompts.map((promptClaim, index) =>
+                typeof promptClaim !== "string" ? (
+                  <PromptClaim
+                    key={index}
+                    arrayIndex={index}
+                    type={promptClaim.type}
+                    status={promptClaim.status}
+                    claimed_by={promptClaim.claimed_by}
+                  />
+                ) : (
+                  ""
+                )
+              )
+            : ""}
+        </div>
+        <label>
+          <h2>2 • Say something cool!</h2>
+          <input
+            type="text"
+            name="promptSubmission"
+            value={promptSubmission}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setPromptSumbission(event.target.value)
+            }
+          />
+        </label>
+        <button type="submit" className="button highlight">
+          3 • Send it over!
+        </button>
+      </form>
+    );
 };
 
 export default PlayerForm;
