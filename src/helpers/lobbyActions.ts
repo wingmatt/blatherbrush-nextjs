@@ -1,6 +1,6 @@
 import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
 import { Lobby, ReducerAction } from "../../types";
-import { randomNewPrompt } from "./promptActions";
+import { compilePrompt, randomNewPrompt } from "./promptActions";
 
 export const getLobbyData = async (
   lobbyCode: string
@@ -90,8 +90,12 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
     // TODO: Send data to OpenAI here.
     lobbyData.phase = "generating";
     dispatch({type: "SET_LOBBY_DATA", payload: lobbyData});
-    // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
     await updateLobby(lobbyData);
+    const compiledPrompt = compilePrompt(lobbyData.prompts);
+    // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
+    //lobbyData.artUrl = openAiImgUrl
+    //lobbyData.phase = "finished";
+    //await updateLobby(lobbyData);
   }
 }
 
