@@ -14,7 +14,7 @@ type LobbyLayoutProps = {
 }
 
 const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
-  const {dispatch} = useUserData();
+  const {state, dispatch} = useUserData();
   useEffect(()=> {
     getLobbyData(lobbyCode).then(lobbyData => {
       console.log(lobbyData);
@@ -34,7 +34,7 @@ const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className={` ${inter.className}`}>{children}</main>
+      <main className={` ${inter.className} ${state.lobby.phase}`}>{children}</main>
     </>
   );
 };
