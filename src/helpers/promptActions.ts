@@ -39,28 +39,44 @@ const possiblePrompts: Prompt[] = [
     "The majestic",
     {
       type: "animal",
-      claimed_by: "",
+      claimed_by: {
+        id: "",
+        name: "",
+        color: ""
+      },
       status: "open",
       text: "",
     },
     "soared through the sky, its",
     {
       type: "adjective",
-      claimed_by: "",
+      claimed_by: {
+        id: "",
+        name: "",
+        color: ""
+      },
       status: "open",
       text: "",
     },
     "wings shimmering in the",
     {
       type: "time of day",
-      claimed_by: "",
+      claimed_by: {
+        id: "",
+        name: "",
+        color: ""
+      },
       status: "open",
       text: "",
     },
     "light. It was pretty",
     {
       type: "adjective",
-      claimed_by: "",
+      claimed_by: {
+        id: "",
+        name: "",
+        color: ""
+      },
       status: "open",
       text: "",
     },
@@ -74,7 +90,7 @@ export const isClaimedPrompt = (
   return (
     typeof prompt == "object" &&
     prompt.status === "claimed" &&
-    prompt.claimed_by === player_id
+    prompt.claimed_by.id === player_id
   );
 };
 

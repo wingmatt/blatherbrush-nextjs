@@ -8,7 +8,7 @@ export interface Lobby {
 }
 
 export interface Player {
-  id?: string;
+  id: string;
   name: string;
   color: string;
 }
@@ -16,7 +16,7 @@ export interface PromptFragment {
   arrayIndex?: number;
   type: string;
   text?: string;
-  claimed_by: string;
+  claimed_by: Player;
   status: "open" | "claimed" | "submitted";
 }
 

@@ -40,7 +40,7 @@ const PlayerForm = () => {
                     arrayIndex={index}
                     type={promptClaim.type}
                     status={promptClaim.status}
-                    claimed_by={promptClaim.claimed_by}
+                    claimed_by_id={promptClaim.claimed_by.id}
                   />
                 ) : (
                   ""

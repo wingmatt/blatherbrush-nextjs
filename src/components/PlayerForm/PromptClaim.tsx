@@ -1,7 +1,15 @@
-import { Context, PromptFragment } from "../../../types";
+import { Context, Player, PromptFragment } from "../../../types";
 import { useUserData } from "@/helpers/UserProvider";
 import { updatePrompt } from "@/helpers/promptActions";
 import styles from '@/styles/PromptClaim.module.css'
+
+type PromptClaimInterface = {
+  arrayIndex?: number;
+  type: string;
+  text?: string;
+  claimed_by_id: string;
+  status: "open" | "claimed" | "submitted";
+}
 
 const claimWord = async (
   state: Context,
@@ -9,29 +17,33 @@ const claimWord = async (
   dispatch: any,
   arrayIndex: number
 ) => {
-  const player_id = state.player.id as string;
+  const player = state.player as Player;
   state.lobby.prompts.forEach((prompt) => {
-    if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by === player_id) {
+    if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by.id === state.player.id) {
       prompt.status = "open";
-      prompt.claimed_by = "";
+      prompt.claimed_by = {
+        name: "",
+        color: "",
+        id: ""
+      };
       prompt.text = "";
     }
   });
   const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
   newPrompt.status = "claimed";
-  newPrompt.claimed_by = player_id;
+  newPrompt.claimed_by = player;
   dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
   await updatePrompt(state.lobby, newPrompt, arrayIndex);
 };
 
 const PromptClaim = ({
   type,
-  claimed_by,
+  claimed_by_id,
   status,
   arrayIndex,
-}: PromptFragment) => {
+}: PromptClaimInterface) => {
   const { state, dispatch } = useUserData();
-  const claimedByPlayer = state.player.id === claimed_by;
+  const claimedByPlayer = state.player.id === claimed_by_id;
   const shouldBeDisabled =
     (status === "claimed" && !claimedByPlayer) || status === "submitted";
   return (
