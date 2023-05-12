@@ -32,7 +32,6 @@ function UserProvider({ children }: Props) {
     player: "",
   });
   React.useEffect(() => {
-    //Initial loading here, can be async~
     dispatch({type: "SET_PLAYER_DATA", payload: localPlayerData});
   }, []);
   const value = { state, dispatch };
@@ -48,8 +47,6 @@ function useUserData() {
 }
 
 export { UserProvider, useUserData };
-
-// Test Data below
 
 const localPlayerData = {
   id: typeof window !== "undefined" ? localStorage.getItem("player_id") : null,
