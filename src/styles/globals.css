@@ -10,6 +10,14 @@
   --color-foreground: var(--color-mono-dark);
   --color-background: var(--color-mono-light);
 
+  --color-red: red;
+  --color-orange: orange;
+  --color-yellow: yellow;
+  --color-green: green;
+  --color-blue: blue;
+  --color-indigo: indigo;
+  --color-violet: violet;
+
   --player-color: #399AAF;
 }
 
@@ -111,4 +119,68 @@ main aside {
 }
 main aside h2 {
   margin-bottom: 16px;
+}
+
+.txt-red {
+  color: var(--color-red);
+}
+.bg-red {
+  background-color: var(--color-red);;
+}
+.border-red {
+  border-color: var(--color-red);
+}
+.txt-orange {
+  color: var(--color-orange);
+}
+.bg-orange {
+  background-color: var(--color-orange);;
+}
+.border-orange {
+  border-color: var(--color-orange);
+}
+.txt-yellow {
+  color: var(--color-yellow);
+}
+.bg-yellow {
+  background-color: var(--color-yellow);;
+}
+.border-yellow {
+  border-color: var(--color-yellow);
+}
+.txt-green {
+  color: var(--color-green);
+}
+.bg-green {
+  background-color: var(--color-green);;
+}
+.border-green {
+  border-color: var(--color-green);
+}
+.txt-blue {
+  color: var(--color-blue);
+}
+.bg-blue {
+  background-color: var(--color-blue);;
+}
+.border-blue {
+  border-color: var(--color-blue);
+}
+.txt-indigo {
+  color: var(--color-indigo);
+}
+.bg-indigo {
+  background-color: var(--color-indigo);;
+}
+.border-indigo {
+  border-color: var(--color-indigo);
+}
+.txt-violet {
+  color: var(--color-violet);
+}
+.bg-violet {
+  background-color: var(--color-violet);;
+}
+.border-violet {
+  border-color: var(--color-violet);
 }
