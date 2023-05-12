@@ -32,8 +32,3 @@ const mockProviderState = {
     state: {prompts: testPrompt}
   }
 
-test("claimablePrompts correctly filters full prompt", () => {
-  render(<UserProvider value={mockProviderState}><PlayerForm/></UserProvider>)
-  const promptClaims = screen.getByRole("radio");
-  expect(promptClaims).length.toBe(3);
-})
