@@ -20,10 +20,10 @@
   padding: 16px;
 }
 
-.form input[value="red"]{ accent-color: red;}
-.form input[value="orange"]{ accent-color: orange;}
-.form input[value="yellow"]{ accent-color: yellow;}
-.form input[value="green"]{ accent-color: green;}
-.form input[value="blue"]{ accent-color: blue;}
+.form input[value="red"]{ accent-color: var(--color-red);}
+.form input[value="orange"]{ accent-color: var(--color-orange);}
+.form input[value="yellow"]{ accent-color: var(--color-yellow);}
+.form input[value="green"]{ accent-color: var(--color-green);}
+.form input[value="blue"]{ accent-color: var(--color-blue);}
 .form input[value="indigo"]{ accent-color: indigo;}
-.form input[value="violet"]{ accent-color: violet;}
+.form input[value="violet"]{ accent-color: var(--color-violet);}

@@ -108,7 +108,7 @@ const NameForm = () => {
           Violet
         </label>
       </fieldset>
-      <button type="submit" className="button highlight" >
+      <button type="submit" className={`button bg-${form.color}`} >
         Join Game
       </button>
     </form>
