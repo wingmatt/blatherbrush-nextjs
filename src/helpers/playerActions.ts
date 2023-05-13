@@ -1,4 +1,4 @@
-import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
+import { insertAndReturn } from "@/helpers/supabaseClient";
 import { Player } from "../../types";
 
 // Get player data from ID
