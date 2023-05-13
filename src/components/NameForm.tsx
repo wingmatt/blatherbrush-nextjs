@@ -89,7 +89,7 @@ const NameForm = () => {
           />{" "}
           Blue
         </label>
-        <label>
+        {form.name === "Matt!" ? <label>
           <input
             type="radio"
             name="color"
@@ -97,7 +97,7 @@ const NameForm = () => {
             onChange={(event) => handleChange(event)}
           />{" "}
           Indigo
-        </label>
+        </label>: ""}
         <label>
           <input
             type="radio"
