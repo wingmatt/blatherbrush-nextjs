@@ -18,7 +18,7 @@ const PromptFragmentHtml = (promptFragment: PromptFragment | string, index: numb
 const FormattedPrompt = () => {
   const { state } = useUserData();
   return (
-    <aside>
+    <aside className={styles.formattedPrompt}>
       {state.lobby.prompts ? state.lobby.prompts.map((promptFragment, index) => PromptFragmentHtml(promptFragment, index)) : ""}
     </aside>
   )

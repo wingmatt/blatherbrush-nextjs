@@ -196,3 +196,15 @@ main aside h2 {
 .border-violet {
   border-color: var(--color-violet);
 }
+
+.generating section, .finished section {
+  text-align: center;
+}
+
+.generating, .finished {
+  grid-template-areas:
+                        "title"
+                        "canvas"
+                        "prompt"
+                        "actions";
+}

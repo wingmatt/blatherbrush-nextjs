@@ -1,3 +1,8 @@
+.formattedPrompt {
+  max-width: 60ch;
+  margin: auto;
+  margin-top: 36px;
+}
 .dynamic, .static {
   font-family: monospace;
 }
@@ -9,7 +14,6 @@
   align-items: center;
 }
 .dynamic .claimed_by {
-  align-self: flex-start;
   font-size: .66em;
   position: absolute;
   top: -.75em;
@@ -21,4 +25,8 @@
 
 .dynamic .type {
   font-size: .66em;
+}
+
+.static {
+  line-height: 2.5;
 }
