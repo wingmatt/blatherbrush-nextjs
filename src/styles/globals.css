@@ -26,13 +26,13 @@
     --color-foreground: var(--color-mono-light);
     --color-background: var(--color-mono-dark);
     --color-mono-highlight: #737373;
-    --color-red: #D30018;
-    --color-orange: #F76700;
-    --color-yellow: #FDDE02;
-    --color-green: #21B372;
-    --color-blue: #0076C5;
+    --color-red: #F66061;
+    --color-orange: #F68256;
+    --color-yellow: #EBAD5D;
+    --color-green: #97C789;
+    --color-blue: #7EBCBE;
     --color-indigo: indigo;
-    --color-violet: #5C2983;
+    --color-violet: #6D6889;
   }
   html {
     color-scheme: dark;
@@ -141,7 +141,8 @@ main aside h2 {
   color: var(--color-orange);
 }
 .bg-orange {
-  background-color: var(--color-orange);;
+  background-color: var(--color-orange);
+  color: var(--color-mono-dark);
 }
 .border-orange {
   border-color: var(--color-orange);
@@ -160,7 +161,9 @@ main aside h2 {
   color: var(--color-green);
 }
 .bg-green {
-  background-color: var(--color-green);;
+  background-color: var(--color-green);
+  color: var(--color-mono-dark);
+
 }
 .border-green {
   border-color: var(--color-green);
@@ -169,7 +172,8 @@ main aside h2 {
   color: var(--color-blue);
 }
 .bg-blue {
-  background-color: var(--color-blue);;
+  background-color: var(--color-blue);
+  color: var(--color-mono-dark);
 }
 .border-blue {
   border-color: var(--color-blue);
@@ -178,7 +182,7 @@ main aside h2 {
   color: var(--color-indigo);
 }
 .bg-indigo {
-  background-color: var(--color-indigo);;
+  background-color: var(--color-indigo);
 }
 .border-indigo {
   border-color: var(--color-indigo);
@@ -187,7 +191,7 @@ main aside h2 {
   color: var(--color-violet);
 }
 .bg-violet {
-  background-color: var(--color-violet);;
+  background-color: var(--color-violet);
 }
 .border-violet {
   border-color: var(--color-violet);
