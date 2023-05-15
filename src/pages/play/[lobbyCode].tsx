@@ -13,7 +13,7 @@ export default function PlayLobby() {
       <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
         <Title/>
         <PlayerForm/>
-        <Canvas url="no" prompt="no"/>
+        <Canvas />
       </LobbyLayout>
     </UserProvider>
   ); else return (
