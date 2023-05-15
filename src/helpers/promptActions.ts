@@ -69,7 +69,17 @@ const possiblePrompts: Prompt[] = [
       status: "open",
       text: "",
     },
-    "light."
+    "light. Illustration in the style of",
+    {
+      type: "Style",
+      claimed_by: {
+        id: "",
+        name: "",
+        color: ""
+      },
+      status: "open",
+      text: "",
+    },
   ],
 ];
 
