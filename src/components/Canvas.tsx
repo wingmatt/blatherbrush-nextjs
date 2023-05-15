@@ -4,7 +4,6 @@ import FormattedPrompt from "./FormattedPrompt";
 import { useUserData } from "@/helpers/UserProvider";
 import { resetLobby } from "@/helpers/lobbyActions";
 import { compilePrompt } from "@/helpers/promptActions";
-import LoadingSpinner from "./LoadingSpinner";
 
 const Canvas = () => {
   const {state} = useUserData()
