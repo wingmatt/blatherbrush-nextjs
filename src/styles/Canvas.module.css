@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 768px) {
   .canvas {
-    max-width: 42vw;
+    max-width: calc(100% - 36px);
   }
   main > *:not(.canvas, h1) {
     order: 2;
