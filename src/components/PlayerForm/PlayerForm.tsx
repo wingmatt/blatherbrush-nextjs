@@ -64,6 +64,7 @@ const PlayerForm = () => {
         </button>
       </form>
     );
+  else return <></>;
 };
 
 export default PlayerForm;
