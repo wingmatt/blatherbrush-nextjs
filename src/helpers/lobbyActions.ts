@@ -1,6 +1,7 @@
 import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
 import { Lobby, ReducerAction } from "../../types";
 import { compilePrompt, randomNewPrompt } from "./promptActions";
+import { openai } from "./openaiClient";
 
 export const getLobbyData = async (
   lobbyCode: string
@@ -93,11 +94,15 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
     await updateLobby(lobbyData);
     const compiledPrompt = compilePrompt(lobbyData.prompts);
     // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
-    /* OpenAI piece below
-    lobbyData.artUrl = await openAiImgUrl(compiledPrompt);
+    await fetch("/api/get-openai-img", {
+      method: "POST",
+      body: compiledPrompt
+    }).then(async (response) => {
+      const artUrl = await response.text();
+      lobbyData.artUrl = artUrl;
+    });
     lobbyData.phase = "finished";
     await updateLobby(lobbyData);
-    */
   }
 }
 
