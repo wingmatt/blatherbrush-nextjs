@@ -6,11 +6,8 @@ import { UserProvider } from '@/helpers/UserProvider'
 import LobbyLayout from '@/components/LobbyLayout'
 import WatchInfo from '@/components/WatchInfo'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   const router = useRouter()
-  const lobbyCode = router.query.lobbyCode as string;
   return (
     <UserProvider>
       <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
