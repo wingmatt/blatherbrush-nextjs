@@ -3,7 +3,7 @@ export interface Lobby {
   created_at?: string;
   code: string;
   phase: "suggesting" | "generating" | "finished";
-  artUrl?: string;
+  artUrl?: string | null;
   prompts: (string | PromptFragment)[];
 }
 

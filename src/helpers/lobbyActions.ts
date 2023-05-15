@@ -1,7 +1,6 @@
 import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
 import { Lobby, ReducerAction } from "../../types";
 import { compilePrompt, randomNewPrompt } from "./promptActions";
-import { openai } from "./openaiClient";
 
 export const getLobbyData = async (
   lobbyCode: string
@@ -82,6 +81,16 @@ export const deleteLobby = async (
     throw error;
   }
 };
+
+export const resetLobby = async (lobbyCode: Lobby["code"]): Promise<Lobby> => {
+  const freshLobby: Lobby = {
+    code: lobbyCode,
+    phase: "suggesting",
+    prompts: randomNewPrompt(),
+    artUrl: null
+  }
+  return await updateLobby(freshLobby);
+}
 
 export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
   // Check if all prompts are submitted
