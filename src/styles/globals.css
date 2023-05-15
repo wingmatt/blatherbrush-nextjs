@@ -132,69 +132,47 @@ main aside h2 {
   color: var(--color-red);
 }
 .bg-red {
-  background-color: var(--color-red);;
-}
-.border-red {
-  border-color: var(--color-red);
+  background-color: var(--color-red) !important;
 }
 .txt-orange {
   color: var(--color-orange);
 }
 .bg-orange {
-  background-color: var(--color-orange);
-  color: var(--color-mono-dark);
-}
-.border-orange {
-  border-color: var(--color-orange);
+  background-color: var(--color-orange) !important;
+  color: var(--color-mono-dark) !important;
 }
 .txt-yellow {
   color: var(--color-yellow);
 }
 .bg-yellow {
-  background-color: var(--color-yellow);
-  color: var(--color-mono-dark);
-}
-.border-yellow {
-  border-color: var(--color-yellow);
+  background-color: var(--color-yellow) !important;
+  color: var(--color-mono-dark) !important;
 }
 .txt-green {
   color: var(--color-green);
 }
 .bg-green {
-  background-color: var(--color-green);
-  color: var(--color-mono-dark);
-
-}
-.border-green {
-  border-color: var(--color-green);
+  background-color: var(--color-green) !important;
+  color: var(--color-mono-dark) !important;
 }
 .txt-blue {
   color: var(--color-blue);
 }
 .bg-blue {
-  background-color: var(--color-blue);
-  color: var(--color-mono-dark);
-}
-.border-blue {
-  border-color: var(--color-blue);
+  background-color: var(--color-blue) !important;
+  color: var(--color-mono-dark) !important;
 }
 .txt-indigo {
   color: var(--color-indigo);
 }
 .bg-indigo {
-  background-color: var(--color-indigo);
-}
-.border-indigo {
-  border-color: var(--color-indigo);
+  background-color: var(--color-indigo) !important;
 }
 .txt-violet {
   color: var(--color-violet);
 }
 .bg-violet {
-  background-color: var(--color-violet);
-}
-.border-violet {
-  border-color: var(--color-violet);
+  background-color: var(--color-violet) !important;
 }
 
 .generating section, .finished section {

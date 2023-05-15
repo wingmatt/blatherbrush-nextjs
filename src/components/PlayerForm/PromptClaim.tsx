@@ -2,12 +2,14 @@ import { Context, Player, PromptFragment } from "../../../types";
 import { useUserData } from "@/helpers/UserProvider";
 import { updatePrompt } from "@/helpers/promptActions";
 import styles from '@/styles/PromptClaim.module.css'
+import { StringLiteral } from "typescript";
 
 type PromptClaimInterface = {
   arrayIndex?: number;
   type: string;
   text?: string;
   claimed_by_id: string;
+  claimed_by_color: string;
   status: "open" | "claimed" | "submitted";
 }
 
@@ -39,6 +41,7 @@ const claimWord = async (
 const PromptClaim = ({
   type,
   claimed_by_id,
+  claimed_by_color,
   status,
   arrayIndex,
 }: PromptClaimInterface) => {
@@ -50,7 +53,7 @@ const PromptClaim = ({
     <label
       className={`${styles.prompt} ${claimedByPlayer ? styles.claimedByPlayer : ""} ${
         shouldBeDisabled ? styles.shouldBeDisabled : ""
-      } ${styles[status]}`}
+      } bg-${claimed_by_color} ${styles[status]}`}
     >
       <input
         type="radio"

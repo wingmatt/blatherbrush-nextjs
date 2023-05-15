@@ -40,6 +40,7 @@ const PlayerForm = () => {
                     arrayIndex={index}
                     type={promptClaim.type}
                     status={promptClaim.status}
+                    claimed_by_color={promptClaim.claimed_by.color}
                     claimed_by_id={promptClaim.claimed_by.id}
                   />
                 ) : (
@@ -59,7 +60,7 @@ const PlayerForm = () => {
             }
           />
         </label>
-        <button type="submit" className="button highlight">
+        <button type="submit" className={`button bg-${state.player.color}`}>
           3 • Send it over!
         </button>
       </form>
