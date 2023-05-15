@@ -93,9 +93,11 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
     await updateLobby(lobbyData);
     const compiledPrompt = compilePrompt(lobbyData.prompts);
     // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
-    //lobbyData.artUrl = openAiImgUrl
-    //lobbyData.phase = "finished";
-    //await updateLobby(lobbyData);
+    /* OpenAI piece below
+    lobbyData.artUrl = await openAiImgUrl(compiledPrompt);
+    lobbyData.phase = "finished";
+    await updateLobby(lobbyData);
+    */
   }
 }
 
