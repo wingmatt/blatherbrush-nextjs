@@ -14,7 +14,7 @@ const Canvas = () => {
         src={state.lobby.artUrl ? state.lobby.artUrl : "https://via.placeholder.com/1024"}
         width="1024"
         height="1024"
-        alt={state.lobby.artUrl ? compilePrompt(state.prompts) : ""}
+        alt={state.lobby.artUrl ? compilePrompt(state.lobby.prompts) : ""}
       />
       {(state.lobby.phase === "generating") ? <h2 className={styles.generatingText}>Our top artbots are &ldquo;painting&rdquo; your commission now!<br/>Here&apos;s the prompt you provided:</h2> : ""}
       {(state.lobby.phase === "generating" || state.lobby.phase === "finished") ? <FormattedPrompt/> : ""}
