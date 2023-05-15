@@ -19,6 +19,7 @@ const WatchInfo = () => {
                   type={promptClaim.type}
                   status={promptClaim.status}
                   claimed_by_id={promptClaim.claimed_by.id}
+                  claimed_by_color={promptClaim.claimed_by.color}
                 />
               ) : (
                 ""
