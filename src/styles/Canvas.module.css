@@ -1,7 +1,6 @@
-
 @media screen and (max-width: 768px) {
   .canvas {
-    display: none;
+    max-width: calc(100% - 36px);
   }
   main > *:not(.canvas, h1) {
     order: 2;
