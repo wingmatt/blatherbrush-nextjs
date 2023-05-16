@@ -9,7 +9,7 @@ import LobbyQR from "./LobbyQR";
 const Canvas = () => {
   const { state } = useUserData();
   return (
-    <section>
+    <section className={styles.canvas}>
       {state.lobby.phase !== "suggesting" ? (
         <Image
           className={styles.canvas}

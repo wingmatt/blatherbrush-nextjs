@@ -1,6 +1,7 @@
 
 
 .prompt {
+  display: inline-block;
   flex: 1 0 40%;
   text-align: center;
   padding: 8px 16px;

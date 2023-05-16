@@ -1,15 +1,20 @@
 import { useUserData } from "@/helpers/UserProvider";
 import PromptClaim from "./PlayerForm/PromptClaim";
+import styles from "@/styles/WatchInfo.module.css"
 
 const WatchInfo = () => {
   const { state } = useUserData();
   return (
-    <aside>
+    <aside className={styles.watchInfo}>
       <h2 className="lobby-code">
-        {" "}
         Lobby Code: <span>{state.lobby.code}</span>
       </h2>
-      <div role="group" className="">
+      <p>
+        Want in on the fun? Go to blatherbrush.com and enter{" "}
+        <b>{state.lobby.code}</b>, or scan the QR code with your phone!
+      </p>
+      <h2>This Round&apos;s Prompts</h2>
+      <div role="group" className={styles.prompts}>
         {state.lobby.prompts
           ? state.lobby.prompts.map((promptClaim, index) =>
               typeof promptClaim !== "string" ? (
@@ -31,4 +36,4 @@ const WatchInfo = () => {
   );
 };
 
-export default WatchInfo
+export default WatchInfo;
