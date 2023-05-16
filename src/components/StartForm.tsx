@@ -53,7 +53,7 @@ const StartForm = () => {
         <input
           type="text"
           name="lobby_code"
-          value={form.lobby_code}
+          value={form.lobby_code.toUpperCase()}
           maxLength={4}
           onChange={(event) => handleChange(event)}
         />
