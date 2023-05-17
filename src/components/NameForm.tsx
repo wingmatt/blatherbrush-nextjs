@@ -2,16 +2,9 @@ import { useState } from "react";
 import { useUserData } from "@/helpers/UserProvider";
 import { createPlayer } from "@/helpers/playerActions";
 import ColorSelector from "./ColorSelector";
-import styles from "@/styles/NameForm.module.css"
+import styles from "@/styles/NameForm.module.css";
 
-const availableColors = [
-  "red",
-  "orange",
-  "yellow",
-  "green",
-  "blue",
-  "violet"
-]
+const availableColors = ["red", "orange", "yellow", "green", "blue", "violet"];
 
 const NameForm = () => {
   const { state, dispatch } = useUserData();
@@ -54,11 +47,25 @@ const NameForm = () => {
       </label>
       <fieldset>
         <legend>Pick a color</legend>
-        {availableColors.map((color, index) => <ColorSelector key={index} className={styles.colorSelector} color={color} onChange={(event) => handleChange(event)}/>)}
-        {form.name === "Matt!" ?
-        <ColorSelector className={styles.colorSelector} color="indigo" onChange={(event) => handleChange(event)}/>: ""}
+        {availableColors.map((color, index) => (
+          <ColorSelector
+            key={index}
+            className={styles.colorSelector}
+            color={color}
+            onChange={(event) => handleChange(event)}
+          />
+        ))}
+        {form.name === "Matt!" ? (
+          <ColorSelector
+            className={styles.colorSelector}
+            color="indigo"
+            onChange={(event) => handleChange(event)}
+          />
+        ) : (
+          ""
+        )}
       </fieldset>
-      <button type="submit" className={`button bg-${form.color}`} >
+      <button type="submit" className={`button bg-${form.color}`}>
         Join Game
       </button>
     </form>
