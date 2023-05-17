@@ -50,10 +50,10 @@ const PlayerForm = () => {
               )
             : ""}
         </div>
-        {getClaimedPrompt(state.lobby.prompts, state.player.id) ? 
+        {getClaimedPrompt(state.lobby.prompts, state.player.id) ?
         <>
           <label>
-            <h2>2 • Type a fun {getClaimedPrompt(state.lobby.prompts, state.player.id).type}!</h2>
+            <h2>2 • Type a fun {getClaimedPrompt(state.lobby.prompts, state.player.id)?.type}!</h2>
             <input
               type="text"
               name="promptSubmission"
