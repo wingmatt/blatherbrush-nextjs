@@ -1,4 +1,5 @@
 import { useUserData } from "@/helpers/UserProvider";
+import Title from "./Title";
 
 const Header = () => {
   const { state } = useUserData();
