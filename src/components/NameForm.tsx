@@ -19,6 +19,9 @@ const NameForm = () => {
       [event.target.name]: event.target.value,
     }));
   };
+  const isSelectedColor = (color :string): boolean => {
+    return (form.color === color)
+  }
   return (
     <form
       id="nameForm"
@@ -45,12 +48,12 @@ const NameForm = () => {
           onChange={(event) => handleChange(event)}
         />
       </label>
-      <fieldset>
+      <fieldset className={styles.colorSelectors}>
         <legend>Pick a color</legend>
         {availableColors.map((color, index) => (
           <ColorSelector
             key={index}
-            className={styles.colorSelector}
+            className={isSelectedColor(color) ? `${styles.colorSelector} bg-${color}` : styles.colorSelector}
             color={color}
             onChange={(event) => handleChange(event)}
           />
