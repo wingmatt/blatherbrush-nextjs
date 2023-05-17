@@ -2,7 +2,6 @@ import { Context, Player, PromptFragment } from "../../../types";
 import { useUserData } from "@/helpers/UserProvider";
 import { updatePrompt } from "@/helpers/promptActions";
 import styles from '@/styles/PromptClaim.module.css'
-import { StringLiteral } from "typescript";
 
 type PromptClaimInterface = {
   arrayIndex?: number;
