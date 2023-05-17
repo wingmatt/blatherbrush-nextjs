@@ -11,7 +11,6 @@ export default function PlayLobby() {
   if (router.isReady) return (
     <UserProvider>
       <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
-        <Title/>
         <PlayerForm/>
         <Canvas />
       </LobbyLayout>
