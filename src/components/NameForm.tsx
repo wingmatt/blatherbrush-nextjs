@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { useUserData } from "@/helpers/UserProvider";
 import { createPlayer } from "@/helpers/playerActions";
+import ColorSelector from "./ColorSelector";
 import styles from "@/styles/NameForm.module.css"
+
+const availableColors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "violet"
+]
 
 const NameForm = () => {
   const { state, dispatch } = useUserData();
@@ -44,69 +54,9 @@ const NameForm = () => {
       </label>
       <fieldset>
         <legend>Pick a color</legend>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="red"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Red
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="orange"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Orange
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="yellow"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Yellow
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="green"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Green
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="blue"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Blue
-        </label>
-        {form.name === "Matt!" ? <label>
-          <input
-            type="radio"
-            name="color"
-            value="indigo"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Indigo
-        </label>: ""}
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="violet"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Violet
-        </label>
+        {availableColors.map((color, index) => <ColorSelector key={index} className={styles.colorSelector} color={color} onChange={(event) => handleChange(event)}/>)}
+        {form.name === "Matt!" ?
+        <ColorSelector className={styles.colorSelector} color="indigo" onChange={(event) => handleChange(event)}/>: ""}
       </fieldset>
       <button type="submit" className={`button bg-${form.color}`} >
         Join Game
