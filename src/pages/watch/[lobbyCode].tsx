@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { Inter } from 'next/font/google'
 import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'
 import { UserProvider } from '@/helpers/UserProvider'

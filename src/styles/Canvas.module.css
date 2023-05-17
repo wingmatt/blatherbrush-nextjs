@@ -1,12 +1,3 @@
-.canvas {
-  border-radius: 8px;
-  border: 2px solid var(--color-foreground);
-  box-shadow: 4px 4px 0 var(--color-foreground);
-  grid-area: canvas;
-  max-width: clamp(20vh, 100%, 50vh);
-  height: auto;
-}
-
 @media screen and (max-width: 768px) {
   .canvas {
     max-width: calc(100% - 36px);

@@ -4,7 +4,7 @@ import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment, Prompt } from "../../../types";
 import NameForm from "../NameForm";
-import { isClaimedPrompt } from "@/helpers/promptActions";
+import { getClaimedPrompt, isClaimedPrompt } from "@/helpers/promptActions";
 import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
 const PlayerForm = () => {
@@ -19,6 +19,7 @@ const PlayerForm = () => {
     claimed_prompt.text = promptSubmission;
     claimed_prompt.status = "submitted";
     dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
+    setPromptSumbission("");
     await updateLobby(state.lobby).then(async (newLobbyData) => {
       await maybeGeneratingPhase(newLobbyData, dispatch);
     });
@@ -49,20 +50,23 @@ const PlayerForm = () => {
               )
             : ""}
         </div>
-        <label>
-          <h2>2 • Say something cool!</h2>
-          <input
-            type="text"
-            name="promptSubmission"
-            value={promptSubmission}
-            onChange={(event: ChangeEvent<HTMLInputElement>) =>
-              setPromptSumbission(event.target.value)
-            }
-          />
-        </label>
-        <button type="submit" className={`button bg-${state.player.color}`}>
-          3 • Send it over!
-        </button>
+        {getClaimedPrompt(state.lobby.prompts, state.player.id) ?
+        <>
+          <label>
+            <h2>2 • Type a fun {getClaimedPrompt(state.lobby.prompts, state.player.id)?.type}!</h2>
+            <input
+              type="text"
+              name="promptSubmission"
+              value={promptSubmission}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setPromptSumbission(event.target.value)
+              }
+            />
+          </label>
+          <button type="submit" className={`button bg-${state.player.color}`}>
+            3 • Send it over!
+          </button>
+        </>: ""}
       </form>
     );
   else return <></>;

@@ -94,6 +94,10 @@ export const isClaimedPrompt = (
   );
 };
 
+export const getClaimedPrompt = (prompts: Prompt, player_id: Player["id"]): PromptFragment => {
+  return prompts.find((prompt) => isClaimedPrompt(prompt, player_id)) as PromptFragment;
+}
+
 export const compilePrompt = (prompts: Prompt): string => {
   return prompts
     .reduce((compiledPrompt: string, prompt): string => {

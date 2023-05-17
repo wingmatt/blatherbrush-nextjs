@@ -1,0 +1,13 @@
+.prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 300px;
+}
+
+.watchInfo {
+  max-width: 300px;
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+}

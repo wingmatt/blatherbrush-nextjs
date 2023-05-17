@@ -1,0 +1,6 @@
+.qr {
+  background: white;
+  padding: 16px;
+  box-shadow: 2px 2px 0 var(--color-foreground);
+  border-radius: 8px;
+}
