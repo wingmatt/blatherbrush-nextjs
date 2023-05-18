@@ -101,10 +101,17 @@ export const getClaimedPrompt = (prompts: Prompt, player_id: Player["id"]): Prom
 export const compilePrompt = (prompts: Prompt): string => {
   return prompts
     .reduce((compiledPrompt: string, prompt): string => {
-      typeof prompt !== "string"
-        ? (compiledPrompt += prompt.text)
-        : (compiledPrompt += prompt);
-      compiledPrompt += " ";
+      if (typeof prompt !== "string") {
+        (compiledPrompt += prompt.text);
+      } else {
+        // Strings will start with "-" if there's meant to be no space between them and the last prompt.
+        // If that's present, we need to trim the leading space and remove the character from the string before adding to the full prompt
+        if (prompt[0] === "-") {
+          compiledPrompt = compiledPrompt.trim();
+          compiledPrompt += prompt.slice(1);
+        } else compiledPrompt += prompt;
+      }
+      compiledPrompt += " "
       return compiledPrompt;
     }, "")
     .trim();
