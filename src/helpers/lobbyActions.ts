@@ -1,6 +1,6 @@
 import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
-import { Lobby, ReducerAction } from "../../types";
-import { compilePrompt, randomNewPrompt } from "./promptActions";
+import { Lobby } from "../../types";
+import { compilePrompt, moderatePrompt, randomNewPrompt } from "./promptActions";
 
 export const getLobbyData = async (
   lobbyCode: string
@@ -102,16 +102,26 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
     dispatch({type: "SET_LOBBY_DATA", payload: lobbyData});
     await updateLobby(lobbyData);
     const compiledPrompt = compilePrompt(lobbyData.prompts);
-    // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
-    await fetch("/api/get-openai-img", {
-      method: "POST",
-      body: compiledPrompt
-    }).then(async (response) => {
-      const artUrl = await response.text();
-      lobbyData.artUrl = artUrl;
-    });
-    lobbyData.phase = "finished";
-    await updateLobby(lobbyData);
+    moderatePrompt(compiledPrompt).then(async flagged => {
+      if (!flagged) {
+        // When the call to OpenAI completes, update the lobby with the art URL and update lobby to be in the "finished" phase.
+        await fetch("/api/get-openai-img", {
+          method: "POST",
+          body: compiledPrompt
+        }).then(async (response) => {
+          const artUrl = await response.text();
+          lobbyData.artUrl = artUrl;
+        });
+        lobbyData.phase = "finished";
+        await updateLobby(lobbyData);
+      }
+      else {
+        lobbyData.artUrl = "/img/sad-robot.jpg";
+        lobbyData.phase = "finished";
+        lobbyData.prompts = ["our art robot was offended by your prompt. congratulations — collectively, you disgusted a machine"]
+        await updateLobby(lobbyData);
+      }
+    })
   }
 }
 

@@ -35,7 +35,7 @@
     },
     "light.",
     {
-      "type": "Style",
+      "type": "style",
       "claimed_by": {
         "id": "",
         "name": "",
@@ -297,6 +297,267 @@
       "text": ""
     },
     "below.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "The curious",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "peered out of the",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "with a",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "expression, looking out at the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "below.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "The enthusiastic",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "jumped through the air, striking a",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "pose against the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "A grumpy",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "was sitting in a",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "chair, scowling at the",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "outside the window.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "The fluffy",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "clouds were",
+    {
+      "type": "adverb",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "floating across the",
+    {
+      "type": "color",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "sky, while the",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "stood silently in the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "meadow.",
     {
       "type": "style",
       "claimed_by": {

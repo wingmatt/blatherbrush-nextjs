@@ -1,7 +1,11 @@
+.canvas {
+  width: auto;
+  height: auto;
+  max-width: 100vw;
+  aspect-ratio: 1 / 1;
+}
+
 @media screen and (max-width: 768px) {
-  .canvas {
-    max-width: calc(100% - 36px);
-  }
   main > *:not(.canvas, h1) {
     order: 2;
   }

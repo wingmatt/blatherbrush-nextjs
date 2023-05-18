@@ -12,10 +12,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const prompt = req.body;
-  await openai.createImage({
-    prompt: prompt,
-    //size: "256x256"
+  await openai.createModeration({
+    input: prompt
   }).then (response => {
-    res.status(200).send(response.data.data[0].url);
+    console.log(response.data.results[0]);
+    res.status(200).send(response.data.results[0].flagged);
   })
 }

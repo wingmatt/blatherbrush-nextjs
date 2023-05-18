@@ -68,3 +68,14 @@ export const compilePrompt = (prompts: Prompt): string => {
     }, "")
     .trim();
 };
+
+export const moderatePrompt = async (promptSubmission: string): Promise<boolean> => {
+  return await fetch("/api/moderate-prompt", {
+    method: "POST",
+    body: promptSubmission
+  }).then(async (response) => {
+    const isFlagged = await response.text();
+    console.log("Flagged initally?", (isFlagged === "true"));
+    return (isFlagged === "true") as boolean;
+  });
+}

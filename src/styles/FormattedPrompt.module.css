@@ -1,7 +1,6 @@
 .formattedPrompt {
   max-width: 60ch;
-  margin: auto;
-  margin-top: 36px;
+  margin: 24px auto;
   font-size: clamp(1rem, 1.5rem, 3vw);
 }
 .dynamic, .static {
