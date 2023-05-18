@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useUserData } from "@/helpers/UserProvider";
 import { createPlayer } from "@/helpers/playerActions";
-import styles from "@/styles/NameForm.module.css"
+import ColorSelector from "./ColorSelector";
+import styles from "@/styles/NameForm.module.css";
+
+const availableColors = ["red", "orange", "yellow", "green", "blue", "violet"];
 
 const NameForm = () => {
   const { state, dispatch } = useUserData();
@@ -16,6 +19,9 @@ const NameForm = () => {
       [event.target.name]: event.target.value,
     }));
   };
+  const isSelectedColor = (color :string): boolean => {
+    return (form.color === color)
+  }
   return (
     <form
       id="nameForm"
@@ -42,73 +48,27 @@ const NameForm = () => {
           onChange={(event) => handleChange(event)}
         />
       </label>
-      <fieldset>
+      <fieldset className={styles.colorSelectors}>
         <legend>Pick a color</legend>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="red"
+        {availableColors.map((color, index) => (
+          <ColorSelector
+            key={index}
+            className={isSelectedColor(color) ? `${styles.colorSelector} bg-${color}` : styles.colorSelector}
+            color={color}
             onChange={(event) => handleChange(event)}
-          />{" "}
-          Red
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="orange"
+          />
+        ))}
+        {form.name === "Matt!" ? (
+          <ColorSelector
+            className={styles.colorSelector}
+            color="indigo"
             onChange={(event) => handleChange(event)}
-          />{" "}
-          Orange
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="yellow"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Yellow
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="green"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Green
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="blue"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Blue
-        </label>
-        {form.name === "Matt!" ? <label>
-          <input
-            type="radio"
-            name="color"
-            value="indigo"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Indigo
-        </label>: ""}
-        <label>
-          <input
-            type="radio"
-            name="color"
-            value="violet"
-            onChange={(event) => handleChange(event)}
-          />{" "}
-          Violet
-        </label>
+          />
+        ) : (
+          ""
+        )}
       </fieldset>
-      <button type="submit" className={`button bg-${form.color}`} >
+      <button type="submit" className={`button bg-${form.color}`}>
         Join Game
       </button>
     </form>

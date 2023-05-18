@@ -9,15 +9,11 @@
 
 .form > label {
   text-align: center;
+  width: 100%;
 }
 
 .form > label input {
   margin-top: 8px;
-}
-
-.form fieldset label {
-  display: inline-block;
-  padding: 16px;
 }
 
 .form input[value="red"]{ accent-color: var(--color-red);}
@@ -27,3 +23,35 @@
 .form input[value="blue"]{ accent-color: var(--color-blue);}
 .form input[value="indigo"]{ accent-color: indigo;}
 .form input[value="violet"]{ accent-color: var(--color-violet);}
+
+.colorSelectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  border-color: var(--color-foreground);
+}
+
+.colorSelectors legend {
+margin: auto;
+background: var(--color-background);
+padding: 0 8px;
+}
+
+.colorSelector {
+  display: inline-block;
+  flex: 1 0 40%;
+  text-align: center;
+  padding: 8px 16px;
+  background-color: #696969;
+  box-shadow: 2px 2px 0 var(--color-foreground);
+  border: 1px solid var(--color-foreground);
+  color: var(--color-foreground);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.colorSelector input {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+}

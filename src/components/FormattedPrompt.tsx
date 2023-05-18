@@ -3,8 +3,16 @@ import { PromptFragment } from "../../types";
 import { useUserData } from "@/helpers/UserProvider";
 import { maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
+const maybeTrimPrompt = (prompt: string) => {
+  // Strings will start with "-" if there's meant to be no space between them and the last prompt.
+  // If that's present, we need to trim the leading space and remove the character from the string before adding to the full prompt
+  if (prompt[0] === "-") {
+    return prompt.slice(1);
+  } else return prompt;
+}
+
 const PromptFragmentHtml = (promptFragment: PromptFragment | string, index: number) => {
-  if (typeof promptFragment === "string") return <span className={styles.static} key={index}>{promptFragment}</span>;
+  if (typeof promptFragment === "string") return <span className={styles.static} key={index}>{maybeTrimPrompt(promptFragment)}</span>;
   else {
     return (
       <div className={`${styles.dynamic} txt-${promptFragment.claimed_by.color} border-${promptFragment.claimed_by.color}`} key={index}>

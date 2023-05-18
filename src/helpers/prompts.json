@@ -1,0 +1,312 @@
+[
+  [
+    "The majestic",
+    {
+      "type": "animal",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "soared through the sky, its",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "wings shimmering in the",
+    {
+      "type": "time of day",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "light.",
+    {
+      "type": "Style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    " illustration."
+  ],
+  [
+    "A dainty",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "was perched atop a",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-, gazing at the majestic",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "with its",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    {
+      "type": "color",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "The sun shone brightly over the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "beach, where a",
+    {
+      "type": "animal",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "was happily",
+    {
+      "type": "verb",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-ing on a ",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "A lively",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "with bright",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "eyes perched atop a tall",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "gazing out into the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "horizon.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ],
+  [
+    "The vibrant",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "shone brightly in the night sky, casting a magical",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "light across the",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "-. Its silhouette was a stark contrast to the",
+    {
+      "type": "adjective",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "colors of the",
+    {
+      "type": "noun",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "below.",
+    {
+      "type": "style",
+      "claimed_by": {
+        "id": "",
+        "name": "",
+        "color": ""
+      },
+      "status": "open",
+      "text": ""
+    },
+    "illustration."
+  ]
+]

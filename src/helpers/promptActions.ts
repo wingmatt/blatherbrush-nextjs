@@ -1,6 +1,8 @@
 import { supabase } from "@/helpers/supabaseClient";
 import { Lobby, Player, PromptFragment, Prompt } from "../../types";
 
+import possiblePrompts from "./prompts.json"
+
 // Update a prompt claim: its claim, status, and/or text
 export const updatePrompt = async (
   lobbyData: Lobby,
@@ -31,58 +33,8 @@ export const updatePrompt = async (
 // Select a blank prompt for a new lobby round from an array of possible prompts
 export const randomNewPrompt = (): Prompt => {
   const randomIndex = Math.floor(Math.random() * possiblePrompts.length);
-  return possiblePrompts[randomIndex];
+  return possiblePrompts[randomIndex] as Prompt;
 };
-
-const possiblePrompts: Prompt[] = [
-  [
-    "The majestic",
-    {
-      type: "animal",
-      claimed_by: {
-        id: "",
-        name: "",
-        color: ""
-      },
-      status: "open",
-      text: "",
-    },
-    "soared through the sky, its",
-    {
-      type: "adjective",
-      claimed_by: {
-        id: "",
-        name: "",
-        color: ""
-      },
-      status: "open",
-      text: "",
-    },
-    "wings shimmering in the",
-    {
-      type: "time of day",
-      claimed_by: {
-        id: "",
-        name: "",
-        color: ""
-      },
-      status: "open",
-      text: "",
-    },
-    "light. Illustration in the style of",
-    {
-      type: "Style",
-      claimed_by: {
-        id: "",
-        name: "",
-        color: ""
-      },
-      status: "open",
-      text: "",
-    },
-  ],
-];
-
 export const isClaimedPrompt = (
   prompt: PromptFragment | string,
   player_id: Player["id"]
@@ -101,10 +53,17 @@ export const getClaimedPrompt = (prompts: Prompt, player_id: Player["id"]): Prom
 export const compilePrompt = (prompts: Prompt): string => {
   return prompts
     .reduce((compiledPrompt: string, prompt): string => {
-      typeof prompt !== "string"
-        ? (compiledPrompt += prompt.text)
-        : (compiledPrompt += prompt);
-      compiledPrompt += " ";
+      if (typeof prompt !== "string") {
+        (compiledPrompt += prompt.text);
+      } else {
+        // Strings will start with "-" if there's meant to be no space between them and the last prompt.
+        // If that's present, we need to trim the leading space and remove the character from the string before adding to the full prompt
+        if (prompt[0] === "-") {
+          compiledPrompt = compiledPrompt.trim();
+          compiledPrompt += prompt.slice(1);
+        } else compiledPrompt += prompt;
+      }
+      compiledPrompt += " "
       return compiledPrompt;
     }, "")
     .trim();

@@ -10,7 +10,6 @@ export default function Home() {
   return (
     <UserProvider>
       <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
-      <Title/>
         <WatchInfo/>
         <Canvas />
       </LobbyLayout>

@@ -33,9 +33,6 @@ const StartForm = () => {
     lobby_code: "",
     player: {}
   });
-  useEffect(() => {
-    localStorage.setItem("player_name", form.player_name);
-  }, [form.player_name]);
   const router = useRouter();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prevState) => ({
