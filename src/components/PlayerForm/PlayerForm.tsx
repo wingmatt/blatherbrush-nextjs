@@ -73,7 +73,7 @@ const PlayerForm = () => {
               onBlur={()=> handleBlur()}
             />
           </label>
-          {isFlagged ? <><button onClick={()=> {setPromptSumbission(""); setIsFlagged(false);}}>no thanks. try again</button><p>the robots think you&apos;re being inappropriate</p></> : <button type="submit" className={`button bg-${state.player.color}`}>
+          {isFlagged ? <><button className="button" onClick={()=> {setPromptSumbission(""); setIsFlagged(false);}}>no thanks. try again</button><p>the robots think you&apos;re being inappropriate</p></> : <button type="submit" className={`button bg-${state.player.color}`}>
             3 • Send it over!
           </button>}
         </>: ""}
