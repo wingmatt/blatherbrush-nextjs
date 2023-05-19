@@ -4,7 +4,7 @@ import { createPlayer } from "@/helpers/playerActions";
 import ColorSelector from "./ColorSelector";
 import styles from "@/styles/NameForm.module.css";
 
-const availableColors = ["red", "orange", "yellow", "green", "blue", "violet"];
+const availableColors = ["sunset", "mint", "shadow", "tangerine", "wildberry", "cactus", "sea", "electric", "cozy"];
 
 const NameForm = () => {
   const { state, dispatch } = useUserData();
