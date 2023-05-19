@@ -40,7 +40,7 @@ const NameForm = () => {
       }}
     >
       <label>
-        What&apos;s your name?
+        what&apos;s your name?
         <input
           type="text"
           name="name"
@@ -49,7 +49,7 @@ const NameForm = () => {
         />
       </label>
       <fieldset className={styles.colorSelectors}>
-        <legend>Pick a color</legend>
+        <legend>pick a color</legend>
         {availableColors.map((color, index) => (
           <ColorSelector
             key={index}

@@ -7,13 +7,13 @@ const WatchInfo = () => {
   return (
     <aside className={styles.watchInfo}>
       <h2 className="lobby-code">
-        Lobby Code: <span>{state.lobby.code}</span>
+        lobby code: <span>{state.lobby.code}</span>
       </h2>
       <p>
-        Want in on the fun? Go to blatherbrush.com and enter{" "}
-        <b>{state.lobby.code}</b>, or scan the QR code with your phone!
+        want in on the fun? go to blatherbrush.com and enter{" "}
+        <b>{state.lobby.code}</b>, or scan the QR code with your phone
       </p>
-      <h2>This Round&apos;s Prompts</h2>
+      <h2>this round&apos;s prompts</h2>
       <div role="group" className={styles.prompts}>
         {state.lobby.prompts
           ? state.lobby.prompts.map((promptClaim, index) =>

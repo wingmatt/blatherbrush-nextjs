@@ -45,7 +45,7 @@ const StartForm = () => {
       className={styles.start}
       onSubmit={(event) => handleSubmit(event, form, router)}
     >
-      <h2>Lobby Code?</h2>
+      <h2>enter a lobby code</h2>
       <div>
         <input
           type="text"
@@ -55,12 +55,12 @@ const StartForm = () => {
           onChange={(event) => handleChange(event)}
         />
         <button type="submit" id="joinLobby" className="button highlight">
-          Join
+          join
         </button>
       </div>
-      <span>-OR-</span>
+      <span>-or-</span>
       <button type="button" id="hostLobby" onClick={() => hostLobby(form.player_name, router)} className="button">
-        Host
+        host
       </button>
     </form>
   );
