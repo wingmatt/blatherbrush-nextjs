@@ -16,7 +16,7 @@ const Canvas = () => {
           src={
             state.lobby.artUrl
               ? state.lobby.artUrl
-              : "https://via.placeholder.com/1024"
+              : ""
           }
           width="1024"
           height="1024"

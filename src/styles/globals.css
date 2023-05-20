@@ -80,6 +80,7 @@ svg.playerColor {
   fill: var(--player-color);
   max-width: 2.1rem;
   max-height: 2rem;
+  border-radius: 100%;
 }
 
 header {
