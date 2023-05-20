@@ -172,27 +172,32 @@ main aside h2 {
 }
 .bg-mint {
   background: var(--color-mint);
+  color: var(--color-mono-dark);
 }
 .bg-shadow {
   background: var(--color-shadow);
 }
 .bg-tangerine {
   background: var(--color-tangerine);
+  color: var(--color-mono-dark);
 }
 .bg-wildberry {
   background: var(--color-wildberry);
 }
 .bg-cactus {
   background: var(--color-cactus);
+  color: var(--color-mono-dark);
 }
 .bg-sea {
   background: var(--color-sea);
 }
 .bg-electric {
   background: var(--color-electric);
+  color: var(--color-mono-dark);
 }
 .bg-cozy {
   background: var(--color-cozy);
+  color: var(--color-mono-dark);
 }
 
 .generating section, .finished section {
