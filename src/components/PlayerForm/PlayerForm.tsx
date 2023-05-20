@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
-import { PromptFragment, Prompt } from "../../../types";
+import { PromptFragment } from "../../../types";
 import NameForm from "../NameForm";
 import { getClaimedPrompt, isClaimedPrompt, moderatePrompt } from "@/helpers/promptActions";
 import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
@@ -40,7 +40,7 @@ const PlayerForm = () => {
         className={styles.playerForm}
         onSubmit={(event: FormEvent) => handleSubmit(event)}
       >
-        <h2>1 • Claim your prompt!</h2>
+        <h2>1 • claim your prompt</h2>
         <div role="group" className={styles.wordClaims}>
           {state.lobby.prompts
             ? state.lobby.prompts.map((promptClaim, index) =>
@@ -62,7 +62,7 @@ const PlayerForm = () => {
         {getClaimedPrompt(state.lobby.prompts, state.player.id) ?
         <>
           <label>
-            <h2>2 • Type a fun {getClaimedPrompt(state.lobby.prompts, state.player.id)?.type}!</h2>
+            <h2>2 • type a fun {getClaimedPrompt(state.lobby.prompts, state.player.id)?.type}</h2>
             <input
               type="text"
               name="promptSubmission"
@@ -74,7 +74,7 @@ const PlayerForm = () => {
             />
           </label>
           {isFlagged ? <><button className="button" onClick={()=> {setPromptSumbission(""); setIsFlagged(false);}}>no thanks. try again</button><p>the robots think you&apos;re being inappropriate</p></> : <button type="submit" className={`button bg-${state.player.color}`}>
-            3 • Send it over!
+            3 • send it over
           </button>}
         </>: ""}
       </form>

@@ -13,6 +13,12 @@
   margin: 0 .5em;
   align-items: center;
 }
+
+.dynamic > * {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 .dynamic .claimed_by {
   font-size: .55em;
   position: absolute;

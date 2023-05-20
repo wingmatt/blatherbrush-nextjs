@@ -4,7 +4,7 @@ import { createPlayer } from "@/helpers/playerActions";
 import ColorSelector from "./ColorSelector";
 import styles from "@/styles/NameForm.module.css";
 
-const availableColors = ["red", "orange", "yellow", "green", "blue", "violet"];
+const availableColors = ["sunset", "mint", "shadow", "tangerine", "wildberry", "cactus", "sea", "electric", "cozy"];
 
 const NameForm = () => {
   const { state, dispatch } = useUserData();
@@ -40,7 +40,7 @@ const NameForm = () => {
       }}
     >
       <label>
-        What&apos;s your name?
+        what&apos;s your name?
         <input
           type="text"
           name="name"
@@ -49,7 +49,7 @@ const NameForm = () => {
         />
       </label>
       <fieldset className={styles.colorSelectors}>
-        <legend>Pick a color</legend>
+        <legend>pick a color</legend>
         {availableColors.map((color, index) => (
           <ColorSelector
             key={index}

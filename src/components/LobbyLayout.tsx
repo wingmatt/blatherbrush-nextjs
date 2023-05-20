@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import Head from "next/head";
-import { Inter } from "next/font/google";
+import { Abel } from "next/font/google";
 import Header from "@/components/Header";
 import { useEffect } from 'react'
 import { getLobbyData, subscribeToLobbyUpdates } from '@/helpers/lobbyActions'
 import { useUserData } from '@/helpers/UserProvider'
 
-const inter = Inter({ subsets: ["latin"] });
+const abel = Abel({ subsets: ["latin"], weight: ["400"] });
 
 type LobbyLayoutProps = {
   lobbyCode: string,
@@ -34,7 +34,7 @@ const LobbyLayout = ({lobbyCode, children}: LobbyLayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className={` ${inter.className} ${state.lobby.phase}`}>{children}</main>
+      <main className={` ${abel.className} ${state.lobby.phase}`}>{children}</main>
     </>
   );
 };

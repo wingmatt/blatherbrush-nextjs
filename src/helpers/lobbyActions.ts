@@ -118,7 +118,7 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
       else {
         lobbyData.artUrl = "/img/sad-robot.jpg";
         lobbyData.phase = "finished";
-        lobbyData.prompts = ["our art robot was offended by your prompt. congratulations — collectively, you disgusted a machine"]
+        lobbyData.prompts = ["your prompt offended the art robot. congratulations — you collectively disgusted a machine"]
         await updateLobby(lobbyData);
       }
     })
