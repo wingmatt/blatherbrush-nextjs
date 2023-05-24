@@ -2,7 +2,12 @@ import { supabase } from "@/helpers/supabaseClient";
 import { Lobby, Player, PromptFragment, Prompt } from "../../types";
 
 import possiblePrompts from "./prompts.json"
-
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase UPDATE API:
+// https://supabase.com/docs/reference/javascript/update
+// Note that this is a weird data structure thing, so we're never
+// creating a prompt outright, just updating the lobby with prompt data
+//📚 ///////////////////////////////////////////////////////////📚//
 // Update a prompt claim: its claim, status, and/or text
 export const updatePrompt = async (
   lobbyData: Lobby,

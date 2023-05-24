@@ -1,3 +1,8 @@
+//📚 ///////////////////////////////////////////////////////////📚//
+// Theory on why this is set up the way it is here:
+// https://kentcdodds.com/blog/how-to-use-react-context-effectively
+//📚 ///////////////////////////////////////////////////////////📚//
+
 import * as React from "react";
 import { ReducerState, ReducerAction, Props, Lobby, PromptFragment, Player } from "../../types";
 

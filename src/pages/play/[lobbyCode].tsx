@@ -1,3 +1,8 @@
+//📚 ///////////////////////////////////////////////////////////📚//
+// Using NextJS dynamic routes to handle lobby code pages:
+// https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes
+//📚 ///////////////////////////////////////////////////////////📚//
+
 import { useRouter } from 'next/router'
 import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'

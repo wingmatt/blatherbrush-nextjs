@@ -1,4 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+//📚 ///////////////////////////////////////////////////////////📚//
+// OpenAI createImage API reference:
+// https://platform.openai.com/docs/api-reference/moderations
+//📚 ///////////////////////////////////////////////////////////📚//
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Configuration, OpenAIApi } from "openai";
 

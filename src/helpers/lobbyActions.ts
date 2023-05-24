@@ -28,7 +28,10 @@ export const getLobbyData = async (
 // Get the most chaotic bit of the current time, and turn it into a unique set of 4 letters/numbers
 const newLobbyCode = (): string =>
   Date.now().toString(36).slice(-4).toUpperCase();
-
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase INSERT API:
+// https://supabase.com/docs/reference/javascript/insert
+//📚 ///////////////////////////////////////////////////////////📚//
 export const createLobby = async (playerName: string): Promise<Lobby> => {
   const newLobbyData = {
     code: newLobbyCode(),
@@ -38,7 +41,10 @@ export const createLobby = async (playerName: string): Promise<Lobby> => {
 
   return await insertAndReturn("lobby", newLobbyData) as Lobby;
 };
-
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase UPDATE API:
+// https://supabase.com/docs/reference/javascript/update
+//📚 ///////////////////////////////////////////////////////////📚//
 export const updateLobby = async(lobbyData: Lobby): Promise<Lobby> => {
   try {
     let { data, error, status } = await supabase
@@ -59,7 +65,10 @@ export const updateLobby = async(lobbyData: Lobby): Promise<Lobby> => {
     throw error;
   }
 }
-
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase DELETE API:
+// https://supabase.com/docs/reference/javascript/delete
+//📚 ///////////////////////////////////////////////////////////📚//
 export const deleteLobby = async (
   lobbyCode: string
 ): Promise<Lobby | ErrorEvent> => {
@@ -125,6 +134,13 @@ export const maybeGeneratingPhase = async (lobbyData: Lobby, dispatch: any) => {
   }
 }
 
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase subscriptions API:
+// https://supabase.com/docs/reference/javascript/subscribe
+//
+// We're using postgres_changes, here's a guide on that:
+// https://supabase.com/docs/guides/realtime/extensions/postgres-changes
+//📚 ///////////////////////////////////////////////////////////📚//
 export const subscribeToLobbyUpdates = async (lobbyCode: Lobby["code"], dispatch: any) => {
   const channel = supabase
   .channel('lobbyUpdates')

@@ -8,7 +8,10 @@ type createPlayerParams = {
   name: Player["name"],
   color: Player["color"]
 }
-
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase INSERT API:
+// https://supabase.com/docs/reference/javascript/insert
+//📚 ///////////////////////////////////////////////////////////📚//
 // Create new player
 export const createPlayer = async (player: createPlayerParams): Promise<Player> => {
   const newPlayerData = {
@@ -19,6 +22,10 @@ export const createPlayer = async (player: createPlayerParams): Promise<Player> 
   return await insertAndReturn("player", newPlayerData) as Player;
 }
 
+//📚 ///////////////////////////////////////////////////////////📚//
+// Supabase UPDATE API:
+// https://supabase.com/docs/reference/javascript/update
+//📚 ///////////////////////////////////////////////////////////📚//
 // Update player (name, color) based on ID
 export const updatePlayer = async ( newPlayerData: Player, lobby: Lobby, dispatch: any) => {
   // Find all prompts claimed by this player and update their claimed_by data

@@ -1,3 +1,10 @@
+//📚 ///////////////////////////////////////////////////////////📚//
+// Using NextJS for the overall project framework:
+// https://nextjs.org/docs
+// Using this as a guideline for the project file structure:
+// https://www.joshwcomeau.com/react/file-structure/
+//📚 ///////////////////////////////////////////////////////////📚//
+
 import Head from 'next/head'
 import { Abel } from 'next/font/google'
 import Title from '@/components/Title'
