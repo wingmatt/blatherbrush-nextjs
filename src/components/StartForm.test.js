@@ -6,6 +6,16 @@ import mockProviderState from '../helpers/__mocks__/mockProviderState.json';
 import {createLobby} from '../helpers/lobbyActions'
 import { supabase } from "../helpers/supabaseClient";
 jest.mock('../helpers/supabaseClient');
+jest.mock("next/router", () => ({
+  useRouter() {
+      return {
+          route: "/",
+          pathname: "",
+          query: "",
+          asPath: "",
+      };
+  },
+}));
 
 test("Start form has a text input", () => {
   jest.fn('../helpers/lobbyActions', () => ({
