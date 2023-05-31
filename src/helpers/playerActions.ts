@@ -1,4 +1,4 @@
-import { insertAndReturn } from "@/helpers/supabaseClient";
+import { insertAndReturn } from "./supabaseClient";
 import { Lobby, Player, PromptFragment } from "../../types";
 import { updateLobby } from "./lobbyActions";
 

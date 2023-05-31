@@ -1,4 +1,4 @@
-import { supabase } from "@/helpers/supabaseClient";
+import { supabase } from "./supabaseClient";
 import { Lobby, Player, PromptFragment, Prompt } from "../../types";
 
 import possiblePrompts from "./prompts.json"
