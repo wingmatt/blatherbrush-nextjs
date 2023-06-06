@@ -1,6 +1,6 @@
 import { Context, Player, PromptFragment } from "../../../types";
-import { useUserData } from "@/helpers/UserProvider";
-import { updatePrompt } from "@/helpers/promptActions";
+import { useUserData } from "../../helpers/UserProvider";
+import { updatePrompt } from "../../helpers/promptActions";
 import styles from '@/styles/PromptClaim.module.css'
 
 type PromptClaimInterface = {
