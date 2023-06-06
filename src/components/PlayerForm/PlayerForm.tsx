@@ -5,7 +5,7 @@ import { useUserData } from "@/helpers/UserProvider";
 import { PromptFragment } from "../../../types";
 import NameForm from "../NameForm";
 import { getClaimedPrompt, isClaimedPrompt, moderatePrompt } from "@/helpers/promptActions";
-import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
+import { getLobbyData, updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
 const PlayerForm = () => {
   const { state, dispatch } = useUserData();
@@ -20,16 +20,18 @@ const PlayerForm = () => {
       setIsFlagged(flagged);
       if (!flagged) {
         const player_id = state.player.id as string;
-        const claimed_prompt = state.lobby.prompts.find((prompt) =>
-          isClaimedPrompt(prompt, player_id)
-        ) as PromptFragment;
-        claimed_prompt.text = promptSubmission;
-        claimed_prompt.status = "submitted";
-        dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
-        setPromptSumbission("");
-        await updateLobby(state.lobby).then(async (newLobbyData) => {
-          await maybeGeneratingPhase(newLobbyData, dispatch);
-        });
+        getLobbyData(state.lobby.code).then(async serverLobby => {
+          const claimed_prompt = serverLobby.prompts.find((prompt) =>
+            isClaimedPrompt(prompt, player_id)
+          ) as PromptFragment;
+          claimed_prompt.text = promptSubmission;
+          claimed_prompt.status = "submitted";
+          dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
+          setPromptSumbission("");
+          await updateLobby(serverLobby).then(async (newLobbyData) => {
+            await maybeGeneratingPhase(newLobbyData, dispatch);
+          });
+        })
       }
     });
   };
