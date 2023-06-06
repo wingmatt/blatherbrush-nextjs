@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useUserData } from "@/helpers/UserProvider";
-import { createPlayer } from "@/helpers/playerActions";
+import { useUserData } from "../helpers/UserProvider";
+import { createPlayer } from "../helpers/playerActions";
 import ColorSelector from "./ColorSelector";
 import styles from "@/styles/NameForm.module.css";
 
