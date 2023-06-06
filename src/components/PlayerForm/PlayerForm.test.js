@@ -3,6 +3,8 @@ import userEvent from "@testing-library/user-event";
 import PlayerForm from "./PlayerForm";
 import {UserProvider} from "../../helpers/UserProvider"
 import {jest} from '@jest/globals';
+import { supabase } from "../../helpers/supabaseClient";
+jest.mock('../../helpers/supabaseClient');
 
 const testPrompt = [
   "The majestic",
