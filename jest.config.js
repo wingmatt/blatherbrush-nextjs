@@ -12,7 +12,7 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   transformIgnorePatterns: ['node_modules/(?!(sucrase)/)'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': ['babel-jest', { configFile: './babel.config.testing.js' }],
   },
 }
 
