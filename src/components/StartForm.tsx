@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NextRouter, useRouter } from "next/router";
-import styles from "../../styles/StartForm.module.css";
+import styles from "../styles/StartForm.module.css";
 import { Player } from "../../types";
 
 import { createLobby } from "../helpers/lobbyActions";
