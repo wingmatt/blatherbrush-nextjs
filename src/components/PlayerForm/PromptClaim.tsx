@@ -72,7 +72,7 @@ const PromptClaim = ({
         checked={claimedByPlayer}
         name="wordClaim"
         onChange={() => claimWord(state, dispatch, arrayIndex as number, setLoading)}
-        value="Adjective"
+        value={type}
         disabled={shouldBeDisabled}
       />
       {type}
