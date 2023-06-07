@@ -10,6 +10,7 @@ import { getLobbyData, updateLobby, maybeGeneratingPhase } from "@/helpers/lobby
 const PlayerForm = () => {
   const { state, dispatch } = useUserData();
   const [promptSubmission, setPromptSumbission] = useState("");
+  const [loading, setLoading] = useState(false);
   const [isFlagged, setIsFlagged] = useState(false);
   const handleBlur = async () => {
     moderatePrompt(promptSubmission).then(flagged => setIsFlagged(flagged))
@@ -17,6 +18,7 @@ const PlayerForm = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     moderatePrompt(promptSubmission).then(async flagged => {
+      setLoading(true);
       setIsFlagged(flagged);
       if (!flagged) {
         const player_id = state.player.id as string;
@@ -33,6 +35,7 @@ const PlayerForm = () => {
           });
         })
       }
+      setLoading(false);
     });
   };
   if (!state.player.id) return <NameForm />;
@@ -76,7 +79,7 @@ const PlayerForm = () => {
             />
           </label>
           {isFlagged ? <><button className="button" onClick={()=> {setPromptSumbission(""); setIsFlagged(false);}}>no thanks. try again</button><p>the robots think you&apos;re being inappropriate</p></> : <button type="submit" className={`button bg-${state.player.color}`}>
-            3 • send it over
+            {loading ? "sending..." : "3 • send it over"}
           </button>}
         </>: ""}
       </form>
