@@ -24,7 +24,6 @@
 }
 .dynamic .text {
   display: inline-block;
-  text-decoration: underline;
 }
 
 .dynamic .type {
