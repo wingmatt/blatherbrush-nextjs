@@ -2,35 +2,52 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
 import { useUserData } from "@/helpers/UserProvider";
-import { PromptFragment } from "../../../types";
+import { PromptFragment, Player } from "../../../types";
 import NameForm from "../NameForm";
 import { getClaimedPrompt, isClaimedPrompt, moderatePrompt } from "@/helpers/promptActions";
-import { updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
+import { getLobbyData, updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
 
 const PlayerForm = () => {
   const { state, dispatch } = useUserData();
   const [promptSubmission, setPromptSumbission] = useState("");
+  const [loading, setLoading] = useState(false);
   const [isFlagged, setIsFlagged] = useState(false);
   const handleBlur = async () => {
     moderatePrompt(promptSubmission).then(flagged => setIsFlagged(flagged))
   }
+  const unclaimPrompt = async () => {
+    getLobbyData(state.lobby.code).then(async serverLobby => {
+      const claimed_prompt: PromptFragment = serverLobby.prompts.find((prompt) =>
+        isClaimedPrompt(prompt, state.player.id)
+      ) as PromptFragment
+      claimed_prompt.status = "open"
+      claimed_prompt.claimed_by.color = ""
+      claimed_prompt.claimed_by.id = ""
+      claimed_prompt.claimed_by.name = ""
+      await updateLobby(serverLobby);
+    })
+  }
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     moderatePrompt(promptSubmission).then(async flagged => {
+      setLoading(true);
       setIsFlagged(flagged);
       if (!flagged) {
         const player_id = state.player.id as string;
-        const claimed_prompt = state.lobby.prompts.find((prompt) =>
-          isClaimedPrompt(prompt, player_id)
-        ) as PromptFragment;
-        claimed_prompt.text = promptSubmission;
-        claimed_prompt.status = "submitted";
-        dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
-        setPromptSumbission("");
-        await updateLobby(state.lobby).then(async (newLobbyData) => {
-          await maybeGeneratingPhase(newLobbyData, dispatch);
-        });
+        getLobbyData(state.lobby.code).then(async serverLobby => {
+          const claimed_prompt = serverLobby.prompts.find((prompt) =>
+            isClaimedPrompt(prompt, player_id)
+          ) as PromptFragment;
+          claimed_prompt.text = promptSubmission;
+          claimed_prompt.status = "submitted";
+          dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
+          setPromptSumbission("");
+          await updateLobby(serverLobby).then(async (newLobbyData) => {
+            await maybeGeneratingPhase(newLobbyData, dispatch);
+          });
+        })
       }
+      setLoading(false);
     });
   };
   if (!state.player.id) return <NameForm />;
@@ -74,8 +91,10 @@ const PlayerForm = () => {
             />
           </label>
           {isFlagged ? <><button className="button" onClick={()=> {setPromptSumbission(""); setIsFlagged(false);}}>no thanks. try again</button><p>the robots think you&apos;re being inappropriate</p></> : <button type="submit" className={`button bg-${state.player.color}`}>
-            3 • send it over
+            {loading ? "sending..." : "3 • send it over"}
           </button>}
+          <p className={styles.separator}>—or—</p>
+          <button type="button" className={`button ${styles.unclaim}`} onClick={() => unclaimPrompt()}>relinquish thy claim</button>
         </>: ""}
       </form>
     );

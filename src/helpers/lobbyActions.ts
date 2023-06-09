@@ -4,7 +4,7 @@ import { compilePrompt, moderatePrompt, randomNewPrompt } from "./promptActions"
 
 export const getLobbyData = async (
   lobbyCode: string
-): Promise<Lobby | ErrorEvent> => {
+): Promise<Lobby> => {
   try {
     let { data, error, status } = await supabase
       .from("lobby")
