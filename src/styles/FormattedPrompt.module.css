@@ -2,6 +2,10 @@
   max-width: 60ch;
   margin: 24px auto;
   font-size: clamp(1rem, 1.5rem, 3vw);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 0;
 }
 .dynamic, .static {
   font-family: monospace;
@@ -14,19 +18,12 @@
   align-items: center;
 }
 
-.dynamic > * {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
+
 .dynamic .claimed_by {
   font-size: .55em;
-  position: absolute;
-  top: -.75em;
 }
 .dynamic .text {
   display: inline-block;
-  text-decoration: underline;
 }
 
 .dynamic .type {
