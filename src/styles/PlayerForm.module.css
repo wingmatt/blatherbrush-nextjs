@@ -52,3 +52,13 @@
 .wordClaims label.claimedByPlayer {
   background: var(--player-color);
 }
+
+.separator {
+  font-size: .75rem;
+  text-align: center;
+}
+
+.playerForm .unclaim {
+  font-size: .7rem;
+  padding: 8px;
+}
