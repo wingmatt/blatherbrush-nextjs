@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Title from '@/components/Title'
 import Canvas from '@/components/Canvas'
 import PlayerForm from '@/components/PlayerForm/PlayerForm'
 import LobbyLayout from '@/components/LobbyLayout'
