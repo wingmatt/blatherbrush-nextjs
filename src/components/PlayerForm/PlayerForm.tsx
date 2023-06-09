@@ -19,7 +19,7 @@ const PlayerForm = () => {
     getLobbyData(state.lobby.code).then(async serverLobby => {
       const claimed_prompt: PromptFragment = serverLobby.prompts.find((prompt) =>
         isClaimedPrompt(prompt, state.player.id)
-      )
+      ) as PromptFragment
       claimed_prompt.status = "open"
       claimed_prompt.claimed_by.color = ""
       claimed_prompt.claimed_by.id = ""
