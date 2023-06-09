@@ -11,7 +11,7 @@ export default function Home() {
     <UserProvider>
       <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
         <WatchInfo/>
-        <Canvas />
+        <Canvas displayMode='watch' />
       </LobbyLayout>
     </UserProvider>
   )

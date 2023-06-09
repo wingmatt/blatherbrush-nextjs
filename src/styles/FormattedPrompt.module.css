@@ -7,17 +7,15 @@
   align-items: center;
   gap: 16px 0;
 }
-.dynamic, .static {
-  font-family: monospace;
-}
+
 .dynamic {
   display: inline-flex;
   flex-flow: column;
   position: relative;
   margin: 0 .5em;
   align-items: center;
+  line-height: 1;
 }
-
 
 .dynamic .claimed_by {
   font-size: .55em;
@@ -28,8 +26,4 @@
 
 .dynamic .type {
   font-size: .55em;
-}
-
-.static {
-  line-height: 2.5;
 }

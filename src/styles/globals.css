@@ -212,3 +212,23 @@ main aside h2 {
                         "prompt"
                         "actions";
 }
+
+
+.watch .play-again {
+  display: none;
+}
+
+.finished .watch  {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 10vw, 48px);
+}
+
+.finished .watch > * {
+  flex: 1;
+}
+
+.finished .watch img {
+  max-width: 50%;
+  background-color: var(--color-foreground);
+}

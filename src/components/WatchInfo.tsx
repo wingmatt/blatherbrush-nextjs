@@ -5,7 +5,7 @@ import styles from "@/styles/WatchInfo.module.css"
 const WatchInfo = () => {
   const { state } = useUserData();
   return (
-    <aside className={styles.watchInfo}>
+    <>{state.lobby.phase === "suggesting" ? <aside className={styles.watchInfo}>
       <h2 className="lobby-code">
         lobby code: <span>{state.lobby.code}</span>
       </h2>
@@ -32,7 +32,7 @@ const WatchInfo = () => {
             )
           : ""}
       </div>
-    </aside>
+    </aside> : ""}</>
   );
 };
 
