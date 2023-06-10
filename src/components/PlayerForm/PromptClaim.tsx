@@ -74,7 +74,7 @@ const PromptClaim = ({
         value={type}
         disabled={shouldBeDisabled}
       />
-      {type}
+      {status === "submitted" ? <span className={styles.submittedCheck}>✔ </span> : ""}<span className={styles.promptLabel}>{type}</span>
     </label>
   );
 };
