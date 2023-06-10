@@ -6,7 +6,7 @@ const LobbyQR = () => {
   if (typeof window !== "undefined") {
     thisPageUrl = window.location.href;
   }
-  return <QRCode className={styles.qr} value={thisPageUrl ? thisPageUrl : "/" }/>;
+  return <QRCode className={styles.qr} value={thisPageUrl ? thisPageUrl.replace('watch', 'play') : "/" }/>;
 };
 
 export default LobbyQR;
