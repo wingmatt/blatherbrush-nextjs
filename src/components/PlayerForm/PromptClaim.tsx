@@ -26,7 +26,7 @@ const claimWord = async (
   getLobbyData(state.lobby.code).then(async serverLobby => {
     const serverPrompt = serverLobby.prompts[arrayIndex] as PromptFragment
     if (serverPrompt.status == "open") {
-      state.lobby.prompts.forEach((prompt) => {
+      serverLobby.prompts.forEach((prompt) => {
         if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by.id === state.player.id) {
           prompt.status = "open";
           prompt.claimed_by = {
@@ -37,11 +37,10 @@ const claimWord = async (
           prompt.text = "";
         }
       });
-      const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
-      newPrompt.status = "claimed";
-      newPrompt.claimed_by = player;
-      dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
-      await updatePrompt(state.lobby, newPrompt, arrayIndex);
+      serverPrompt.status = "claimed";
+      serverPrompt.claimed_by = player;
+      dispatch({ type: "SET_LOBBY_DATA", payload: serverLobby });
+      await updatePrompt(serverLobby, serverPrompt, arrayIndex);
     } else {
       dispatch({ type: "SET_LOBBY_DATA", payload: serverLobby });
     }
@@ -75,7 +74,7 @@ const PromptClaim = ({
         value={type}
         disabled={shouldBeDisabled}
       />
-      {type}
+      {status === "submitted" ? <span className={styles.submittedCheck}>✔ </span> : ""}<span className={styles.promptLabel}>{type}</span>
     </label>
   );
 };
