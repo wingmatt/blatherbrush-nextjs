@@ -143,6 +143,14 @@ main aside h2 {
   margin-bottom: 16px;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.span-2 {
+  grid-column-start: span 2;
+}
+
 .bg-red {
   background: var(--color-cozy);
 }
@@ -211,4 +219,24 @@ main aside h2 {
                         "canvas"
                         "prompt"
                         "actions";
+}
+
+
+.watch .play-again {
+  display: none;
+}
+
+.finished .watch  {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 10vw, 48px);
+}
+
+.finished .watch > * {
+  flex: 1;
+}
+
+.finished .watch img {
+  max-width: 50%;
+  background-color: var(--color-foreground);
 }

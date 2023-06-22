@@ -6,10 +6,14 @@ import { resetLobby } from "@/helpers/lobbyActions";
 import { compilePrompt } from "@/helpers/promptActions";
 import LobbyQR from "./LobbyQR";
 
-const Canvas = () => {
+type CanvasProps = {
+  displayMode: string
+}
+
+const Canvas = ({displayMode}: CanvasProps) => {
   const { state } = useUserData();
   return (
-    <section className={styles.canvas}>
+    <section className={`${styles.canvas} ${displayMode}`}>
       {state.lobby.phase !== "suggesting" ? (
         <Image
           className={styles.canvas}
@@ -41,7 +45,7 @@ const Canvas = () => {
         ""
       )}
       {state.lobby.phase === "finished" ? (
-        <button className="button" onClick={() => resetLobby(state.lobby.code)}>
+        <button className="button play-again" onClick={() => resetLobby(state.lobby.code)}>
           Play Again
         </button>
       ) : (

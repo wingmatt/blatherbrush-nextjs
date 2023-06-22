@@ -16,6 +16,8 @@ export default function Home() {
       </Head>
       <main className={` ${abel.className}`}>
         <Title/>
+        <p className='text-center span-2'>fill in the blanks with your friends — we&apos;ll fill out the canvas with your ideas</p>
+        <p className='text-center span-2'>for when you&apos;re desperate to see what a surrealist unicorn made of yarn would look like, but magritte is unavailable</p>
         <StartForm/>
       </main>
     </>

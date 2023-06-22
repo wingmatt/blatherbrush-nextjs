@@ -1,7 +1,9 @@
 import { Context, Player, PromptFragment } from "../../../types";
+import { useState } from "react";
 import { useUserData } from "../../helpers/UserProvider";
 import { updatePrompt } from "../../helpers/promptActions";
-import styles from '@/styles/PromptClaim.module.css'
+import { getLobbyData } from "../../helpers/lobbyActions";
+import styles from '../../styles/PromptClaim.module.css'
 
 type PromptClaimInterface = {
   arrayIndex?: number;
@@ -16,25 +18,34 @@ const claimWord = async (
   state: Context,
   // TODO: Refine dispatch type
   dispatch: any,
-  arrayIndex: number
+  arrayIndex: number,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+  setLoading(true);
   const player = state.player as Player;
-  state.lobby.prompts.forEach((prompt) => {
-    if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by.id === state.player.id) {
-      prompt.status = "open";
-      prompt.claimed_by = {
-        name: "",
-        color: "",
-        id: ""
-      };
-      prompt.text = "";
+  getLobbyData(state.lobby.code).then(async serverLobby => {
+    const serverPrompt = serverLobby.prompts[arrayIndex] as PromptFragment
+    if (serverPrompt.status == "open") {
+      serverLobby.prompts.forEach((prompt) => {
+        if (typeof(prompt) == "object" && prompt.status === "claimed" && prompt.claimed_by.id === state.player.id) {
+          prompt.status = "open";
+          prompt.claimed_by = {
+            name: "",
+            color: "",
+            id: ""
+          };
+          prompt.text = "";
+        }
+      });
+      serverPrompt.status = "claimed";
+      serverPrompt.claimed_by = player;
+      dispatch({ type: "SET_LOBBY_DATA", payload: serverLobby });
+      await updatePrompt(serverLobby, serverPrompt, arrayIndex);
+    } else {
+      dispatch({ type: "SET_LOBBY_DATA", payload: serverLobby });
     }
-  });
-  const newPrompt = state.lobby.prompts[arrayIndex] as PromptFragment;
-  newPrompt.status = "claimed";
-  newPrompt.claimed_by = player;
-  dispatch({ type: "SET_LOBBY_DATA", payload: state.lobby });
-  await updatePrompt(state.lobby, newPrompt, arrayIndex);
+  })
+  setLoading(false)
 };
 
 const PromptClaim = ({
@@ -45,6 +56,7 @@ const PromptClaim = ({
   arrayIndex,
 }: PromptClaimInterface) => {
   const { state, dispatch } = useUserData();
+  const [loading, setLoading] = useState(false);
   const claimedByPlayer = state.player.id === claimed_by_id;
   const shouldBeDisabled =
     (status === "claimed" && !claimedByPlayer) || status === "submitted";
@@ -58,11 +70,11 @@ const PromptClaim = ({
         type="radio"
         checked={claimedByPlayer}
         name="wordClaim"
-        onChange={() => claimWord(state, dispatch, arrayIndex as number)}
-        value="Adjective"
+        onChange={() => claimWord(state, dispatch, arrayIndex as number, setLoading)}
+        value={type}
         disabled={shouldBeDisabled}
       />
-      {type}
+      {status === "submitted" ? <span className={styles.submittedCheck}>✔ </span> : ""}<span className={styles.promptLabel}>{type}</span>
     </label>
   );
 };

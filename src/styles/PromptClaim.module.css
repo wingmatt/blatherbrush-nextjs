@@ -22,6 +22,9 @@
 }
 
 .shouldBeDisabled {
-  text-decoration: line-through;
   opacity: .5;
+}
+
+.shouldBeDisabled .promptLabel {
+  text-decoration: line-through;
 }

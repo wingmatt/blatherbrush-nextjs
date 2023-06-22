@@ -1,18 +1,19 @@
-import { useRouter } from 'next/router'
-import Title from '@/components/Title'
-import Canvas from '@/components/Canvas'
-import { UserProvider } from '@/helpers/UserProvider'
-import LobbyLayout from '@/components/LobbyLayout'
-import WatchInfo from '@/components/WatchInfo'
+import { useRouter } from "next/router";
+import Canvas from "@/components/Canvas";
+import { UserProvider } from "@/helpers/UserProvider";
+import LobbyLayout from "@/components/LobbyLayout";
+import WatchInfo from "@/components/WatchInfo";
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <UserProvider>
-      <LobbyLayout lobbyCode={router.isReady ? router.query.lobbyCode as string : ''}>
-        <WatchInfo/>
-        <Canvas />
+      <LobbyLayout
+        lobbyCode={router.isReady ? (router.query.lobbyCode as string) : ""}
+      >
+        <WatchInfo />
+        <Canvas displayMode="watch" />
       </LobbyLayout>
     </UserProvider>
-  )
+  );
 }

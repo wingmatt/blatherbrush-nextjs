@@ -15,10 +15,10 @@ const PromptFragmentHtml = (promptFragment: PromptFragment | string, index: numb
   if (typeof promptFragment === "string") return <span className={styles.static} key={index}>{maybeTrimPrompt(promptFragment)}</span>;
   else {
     return (
-      <div className={`${styles.dynamic}  border-${promptFragment.claimed_by.color}`} key={index}>
-        <span className={`${styles.claimed_by} bg-${promptFragment.claimed_by.color}`}>{promptFragment.claimed_by.name}</span>
-        <span className={`${styles.text} bg-${promptFragment.claimed_by.color}`}>{promptFragment.text}</span>
-        <span className={`${styles.type} bg-${promptFragment.claimed_by.color}`}>{promptFragment.type}</span>
+      <div className={`${styles.dynamic} button  bg-${promptFragment.claimed_by.color}`} key={index}>
+        <span className={styles.claimed_by}>{promptFragment.claimed_by.name}</span>
+        <span className={styles.text}>{promptFragment.text}</span>
+        <span className={styles.type}>{promptFragment.type}</span>
       </div>
     );
   }
