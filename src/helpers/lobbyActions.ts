@@ -1,4 +1,4 @@
-import { supabase, insertAndReturn } from "@/helpers/supabaseClient";
+import { supabase, insertAndReturn } from "./supabaseClient";
 import { Lobby } from "../../types";
 import { compilePrompt, moderatePrompt, randomNewPrompt } from "./promptActions";
 

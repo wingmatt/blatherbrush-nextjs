@@ -1,9 +1,9 @@
 import { Context, Player, PromptFragment } from "../../../types";
 import { useState } from "react";
-import { useUserData } from "@/helpers/UserProvider";
-import { updatePrompt } from "@/helpers/promptActions";
-import { getLobbyData } from "@/helpers/lobbyActions";
-import styles from '@/styles/PromptClaim.module.css'
+import { useUserData } from "../../helpers/UserProvider";
+import { updatePrompt } from "../../helpers/promptActions";
+import { getLobbyData } from "../../helpers/lobbyActions";
+import styles from '../../styles/PromptClaim.module.css'
 
 type PromptClaimInterface = {
   arrayIndex?: number;

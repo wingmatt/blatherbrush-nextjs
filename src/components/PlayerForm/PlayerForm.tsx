@@ -1,11 +1,11 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import PromptClaim from "./PromptClaim";
 import styles from "@/styles/PlayerForm.module.css";
-import { useUserData } from "@/helpers/UserProvider";
+import { useUserData } from "../../helpers/UserProvider";
 import { PromptFragment, Player } from "../../../types";
 import NameForm from "../NameForm";
-import { getClaimedPrompt, isClaimedPrompt, moderatePrompt } from "@/helpers/promptActions";
-import { getLobbyData, updateLobby, maybeGeneratingPhase } from "@/helpers/lobbyActions";
+import { getClaimedPrompt, isClaimedPrompt, moderatePrompt } from "../../helpers/promptActions";
+import { getLobbyData, updateLobby, maybeGeneratingPhase } from "../../helpers/lobbyActions";
 
 const PlayerForm = () => {
   const { state, dispatch } = useUserData();
