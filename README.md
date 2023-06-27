@@ -2,9 +2,9 @@
 
 Blatherbrush is a mad-libs type game that sends prompts over to [DALL-E](https://openai.com/dall-e-2) to generate art with it. Players can join lobbies using their own smart phones!
 
-![Alt text](image.png)
+![The homepage where you join a game or host it in blather](image.png)
 
-![Alt text](image-1.png)
+![Create your identity in the game, by choosing a name and color](image-1.png)
 
 ## Setup locally
 setup [supabase](https://supabase.com/), an open source Firebase alternative. Once the database is created add the following tables, either through supabase's UI or the SQL editor.
