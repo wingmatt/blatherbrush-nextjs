@@ -4,19 +4,20 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-        port: '',
-        pathname: '**',
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        pathname: "**",
       },
       {
-        protocol: 'https',
-        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
-        port: '',
-        pathname: '**',
+        protocol: "https",
+        hostname: "oaidalleapiprodscus.blob.core.windows.net",
+        port: "",
+        pathname: "**",
       },
     ],
-  }
-}
+  },
+  experimental: { appDir: true },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
