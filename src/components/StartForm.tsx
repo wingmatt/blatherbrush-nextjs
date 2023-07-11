@@ -12,18 +12,12 @@ const handleSubmit = async (
 ) => {
   event.preventDefault();
 
-  router.push({
-    pathname: "play/[lobbyCode]",
-    query: { lobbyCode: form.lobby_code },
-  });
+  router.push("/play/" + form.lobby_code);
 };
 
-const hostLobby = async (player_name: Player['name'], router: NextRouter) => {
+const hostLobby = async (player_name: Player['name'], router: any) => {
   await createLobby(player_name).then((response)=> {
-    router.push({
-      pathname: "play/[lobbyCode]",
-      query: { lobbyCode: response.code },
-    });
+    router.push("/play/" + response.code);
   });
 }
 

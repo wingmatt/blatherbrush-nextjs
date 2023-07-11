@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useSearchParams  } from "next/navigation";
 import Canvas from "@/components/Canvas";
 import PlayerForm from "@/components/PlayerForm/PlayerForm";
 import LobbyLayout from "@/components/LobbyLayout";
@@ -6,22 +6,15 @@ import LobbyLayout from "@/components/LobbyLayout";
 import { UserProvider } from "@/helpers/UserProvider";
 
 export default function PlayLobby() {
-  const router = useRouter();
-  if (router.isReady)
-    return (
-      <UserProvider>
-        <LobbyLayout
-          lobbyCode={router.isReady ? (router.query.lobbyCode as string) : ""}
-        >
-          <PlayerForm />
-          <Canvas displayMode="play" />
-        </LobbyLayout>
-      </UserProvider>
-    );
-  else
-    return (
-      <UserProvider>
-        <span>loading...!</span>
-      </UserProvider>
-    );
+  const searchParams = useSearchParams();
+  return (
+    <UserProvider>
+      <LobbyLayout
+        lobbyCode={searchParams?.get('lobbyCode') as string}
+      >
+        <PlayerForm />
+        <Canvas displayMode="play" />
+      </LobbyLayout>
+    </UserProvider>
+  );
 }
