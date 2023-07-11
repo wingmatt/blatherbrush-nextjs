@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Canvas from "@/components/Canvas";
 import PlayerForm from "@/components/PlayerForm/PlayerForm";
 import LobbyLayout from "@/components/LobbyLayout";
