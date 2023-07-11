@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NextRouter, useRouter } from "next/router";
+import {  useRouter } from "next/navigation";
 import styles from "../styles/StartForm.module.css";
 import { Player } from "../../types";
 
@@ -8,7 +8,7 @@ import { createLobby } from "../helpers/lobbyActions";
 const handleSubmit = async (
   event: React.FormEvent<HTMLFormElement>,
   form: { player_name: string; lobby_code: string },
-  router: NextRouter
+  router: any
 ) => {
   event.preventDefault();
 
