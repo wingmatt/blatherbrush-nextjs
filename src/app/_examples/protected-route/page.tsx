@@ -41,7 +41,9 @@ export default async function ProtectedRoute() {
           </code>
           <span className="flex gap-4">
             Hey, {user.email}! <span className="border-r"></span>{' '}
-            <form action={signOut}>
+            {
+            //@ts-ignore
+            }<form action={signOut}>
               <button className="text-neutral-100">Logout</button>
             </form>
           </span>

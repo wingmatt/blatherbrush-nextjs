@@ -22,8 +22,13 @@ export default async function ServerAction() {
   }
 
   return (
+    //@ts-ignore
     <form action={addTodo}>
-      <input name="title" />
-    </form>
+      {
+      //@ts-ignore
+      }<input name="title" />
+    {
+    //@ts-ignore
+    }</form>
   )
 }
